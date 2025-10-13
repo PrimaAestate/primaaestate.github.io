@@ -21,7 +21,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: `Copyright © ${new Date().getFullYear()} Prima Aestate`,
+      copyright: `Copyright © 2016-${new Date().getFullYear()} Prima Aestate`,
     },
     lastUpdatedText: 'Updated Date',
   },
