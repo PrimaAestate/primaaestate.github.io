@@ -9,7 +9,7 @@ export default defineConfig({
     logo: '/logo.svg',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Contact Us', link: 'mailto:yujinpan21@gmail.com' },
+      { text: 'Contact Us', link: 'mailto:support@primaaestate.cloud' },
       { text: 'Feedback', link: '/Feedback' },
       { text: 'Privacy Policy', link: '/PrivacyPolicy' },
     ],
