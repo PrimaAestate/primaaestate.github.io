@@ -1,6 +1,6 @@
 # Privacy Policy
 
-This policy applies to all information collected on the yujinpan website, our iPhone application and any other devices and platforms.
+This policy applies to all information collected on the website, our iPhone application and any other devices and platforms.
 
 Your privacy is very important to us. Therefore, our website and application will not collect any personal identification information or location data.
 
@@ -10,7 +10,7 @@ By using our website or application, you agree to our privacy policy.
 
 ## Contact information
 
-If you have any questions about this privacy policy, you can send an email to ppyujinpan@hotmail.com.
+If you have any questions about this privacy policy, you can email support@primaaestate.cloud.
 
 ## Changes to this policy
 

@@ -1,5 +1,5 @@
 {
-  "name": "yujinpan.github.io",
+  "name": "primaaestate.github.io",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -10,17 +10,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yujinpan/yujinpan.github.io.git"
+    "url": "git+https://github.com/primaaestate/primaaestate.github.io.git"
   },
   "keywords": [
-    "yujinpan"
+    "primaaestate"
   ],
   "author": "yujinpan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yujinpan/yujinpan.github.io/issues"
+    "url": "https://github.com/primaaestate/primaaestate.github.io/issues"
   },
-  "homepage": "https://github.com/yujinpan/yujinpan.github.io#readme",
+  "homepage": "https://github.com/primaaestate/primaaestate.github.io#readme",
   "devDependencies": {
     "prettier": "^2.8.4",
     "vitepress": "^1.0.0-alpha.60"
