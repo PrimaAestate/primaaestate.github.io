@@ -16,7 +16,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/yujinpan',
+        link: 'https://github.com/primaaestate',
       },
     ],
     footer: {
