@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as r,a1 as a}from"./chunks/framework.w9X9clgI.js";const m=JSON.parse('{"title":"Welcome to Prima Aestate","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),o={name:"index.md"},n=a("",22),i=[n];function l(s,d,h,p,u,c){return r(),e("div",null,i)}const f=t(o,[["render",l]]);export{m as __pageData,f as default};
