@@ -5,7 +5,8 @@ Here are some projects to help us live or work.
 ## Applications
 
 | Name                                                                                          | Description                                                                                        |
-| --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+|-----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| [Aestate](https://apps.apple.com/us/app/aestate/id6749141594?mt=12)                           | A lightweight proxy tool designed to minimize battery drain.                                       |
 | [Hello Hero](https://apps.apple.com/us/app/hello-heros/id6739343026)                          | Chat with your heroes.                                                                             |
 | [Console Mini](https://apps.apple.com/cn/app/console-mini/id6744146152?l=en-GB)               | A mini console for web development tools in Safari.                                                |
 | [URL Editor for Safari](https://apps.apple.com/us/app/url-editor-portable/id6740315748)       | Easily view and edit various contents of the URL.                                                  |

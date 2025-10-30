@@ -20,8 +20,8 @@ export default defineConfig({
       },
     ],
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: `Copyright © 2016-${new Date().getFullYear()} Prima Aestate`,
+      // message: 'Released under the MIT License.',
+      copyright: `Copyright © 2016-${new Date().getFullYear()} Prima Aestate LLC. All rights reserved.`,
     },
     lastUpdatedText: 'Updated Date',
   },
