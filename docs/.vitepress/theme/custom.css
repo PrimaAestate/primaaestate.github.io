@@ -11,3 +11,4 @@
 .app-store-btn{display:inline-block;margin-top:8px;padding:10px 20px;border-radius:10px;background:#000;color:#fff!important;text-decoration:none!important;font-weight:600}
 .app-shots{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px}
 .app-shots img{height:420px;border-radius:14px;border:1px solid var(--vp-c-divider)}
+.oss-link{margin-top:32px;font-size:13px;color:var(--vp-c-text-2)}

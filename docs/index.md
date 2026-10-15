@@ -45,14 +45,4 @@ Lightweight apps for Mac, iPhone, iPad and Safari.
   </a>
 </div>
 
-## Web Tools
-
-| Name | Description |
-| --- | --- |
-| [Cashier Desk (Web)](https://yujinpan.github.io/cashier-desk) | Fully static localized Cashier. |
-| [Learn English From Xinrong](https://yujinpan.github.io/learn-english-from-xinrong) | Helps us review Xinrong video courses. |
-| [Geo Format Convert](https://yujinpan.github.io/format) | - |
-| [Download GeoJSON areas](https://yujinpan.github.io/format/#/geo/areas) | Supported multiple formats. |
-| [ChatGPT Web](https://yujinpan.github.io/chatgpt-web) | ChatGPT web use Gemini. Built-in role play. |
-
-Looking for open-source libraries, Vue components and userscripts? See [Open Source](/open-source).
+<p class="oss-link">Looking for our open-source projects? See <a href="https://yujinpan.github.io/#vue-components" target="_blank" rel="noopener">Open source projects</a>.</p>
