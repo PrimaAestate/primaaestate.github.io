@@ -5,9 +5,9 @@ interface Env extends GhEnv {
   ALLOWED_ORIGINS: string;
   GITHUB_OWNER: string;
   GITHUB_REPO: string;
+  GITHUB_APP_SLUG: string;
   PUBLIC_BASE_URL: string;
   TURNSTILE_SECRET: string;
-  ATTACHMENTS: R2Bucket;
   SUBMIT_LIMIT: RateLimit;
   STATUS_LIMIT: RateLimit;
 }
@@ -17,25 +17,9 @@ const LIMITS = {
   descMin: 10,
   descMax: 5000,
   versionMax: 40,
-  files: 3,
-  fileBytes: 5 * 1024 * 1024,
-  totalBytes: 10 * 1024 * 1024,
+  bodyBytes: 64 * 1024,
   statusIds: 20,
 };
-
-// extension -> mime + magic-bytes check
-const TYPES: Record<string, { mime: string; magic?: (b: Uint8Array) => boolean; inline: boolean }> = {
-  png: { mime: "image/png", inline: true, magic: (b) => b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4e && b[3] === 0x47 },
-  jpg: { mime: "image/jpeg", inline: true, magic: (b) => b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff },
-  jpeg: { mime: "image/jpeg", inline: true, magic: (b) => b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff },
-  gif: { mime: "image/gif", inline: true, magic: (b) => b[0] === 0x47 && b[1] === 0x49 && b[2] === 0x46 },
-  webp: { mime: "image/webp", inline: true, magic: (b) => ascii(b, 0, 4) === "RIFF" && ascii(b, 8, 12) === "WEBP" },
-  heic: { mime: "image/heic", inline: false, magic: (b) => ascii(b, 4, 8) === "ftyp" },
-  txt: { mime: "text/plain; charset=utf-8", inline: false },
-  log: { mime: "text/plain; charset=utf-8", inline: false },
-  zip: { mime: "application/zip", inline: false, magic: (b) => b[0] === 0x50 && b[1] === 0x4b && b[2] === 0x03 && b[3] === 0x04 },
-};
-const ascii = (b: Uint8Array, s: number, e: number) => String.fromCharCode(...b.slice(s, e));
 
 const APP_BY_SLUG = new Map(APPS.map((a) => [a.slug, a.name]));
 
@@ -73,45 +57,13 @@ async function verifyTurnstile(token: string, ip: string, env: Env): Promise<boo
   return j.success === true;
 }
 
-interface Stored { url: string; name: string; size: number; type: string }
-
-async function storeFiles(files: File[], env: Env): Promise<Stored[]> {
-  if (files.length > LIMITS.files) throw new HttpError(400, "too_many_files");
-  let total = 0;
-  const prepared: { key: string; name: string; data: ArrayBuffer; t: (typeof TYPES)[string]; ext: string }[] = [];
-  for (const f of files) {
-    if (f.size === 0) continue;
-    if (f.size > LIMITS.fileBytes) throw new HttpError(400, "file_too_large");
-    total += f.size;
-    if (total > LIMITS.totalBytes) throw new HttpError(400, "files_too_large");
-    const ext = (f.name.split(".").pop() || "").toLowerCase();
-    const t = TYPES[ext];
-    if (!t) throw new HttpError(400, "file_type");
-    const data = await f.arrayBuffer();
-    const head = new Uint8Array(data.slice(0, 16));
-    if (t.magic && !t.magic(head)) throw new HttpError(400, "file_type");
-    if (!t.magic) {
-      try { new TextDecoder("utf-8", { fatal: true, ignoreBOM: false }).decode(data); } catch { throw new HttpError(400, "file_type"); }
-    }
-    const safeName = f.name.replace(/[^\w.\-]+/g, "_").slice(-80) || `file.${ext}`;
-    const id = crypto.randomUUID().replace(/-/g, "") + crypto.randomUUID().replace(/-/g, "").slice(0, 8);
-    prepared.push({ key: `${id}/${safeName}`, name: safeName, data, t, ext });
-  }
-  const out: Stored[] = [];
-  for (const p of prepared) {
-    await env.ATTACHMENTS.put(p.key, p.data, { httpMetadata: { contentType: p.t.mime } });
-    out.push({ url: `${env.PUBLIC_BASE_URL}/a/${p.key}`, name: p.name, size: p.data.byteLength, type: p.ext });
-  }
-  return out;
-}
-
 async function handleSubmit(req: Request, env: Env): Promise<Response> {
   const ip = req.headers.get("CF-Connecting-IP") || "";
   const { success } = await env.SUBMIT_LIMIT.limit({ key: `submit:${ip}` });
   if (!success) throw new HttpError(429, "rate_limited");
 
   const len = Number(req.headers.get("Content-Length") || 0);
-  if (len > LIMITS.totalBytes + 256 * 1024) throw new HttpError(413, "files_too_large");
+  if (len > LIMITS.bodyBytes) throw new HttpError(413, "too_large");
   const ct = req.headers.get("Content-Type") || "";
   if (!ct.includes("multipart/form-data")) throw new HttpError(415, "bad_content_type");
   const form = await req.formData();
@@ -131,20 +83,16 @@ async function handleSubmit(req: Request, env: Env): Promise<Response> {
   if (!summary) summary = oneLine(description).slice(0, 80) + (oneLine(description).length > 80 ? "…" : "");
   const version = oneLine(str("version")).slice(0, LIMITS.versionMax);
 
-  const files = form.getAll("files").filter((f): f is File => typeof f !== "string");
-  const stored = await storeFiles(files, env);
+  // Attachments were removed (no R2). To re-add: see worker/README.md.
 
   const body = [
     sanitize(description),
     "",
     "---",
     `**App:** ${appName}${version ? ` · **Version:** ${sanitize(version)}` : ""}`,
-    stored.length
-      ? "**Attachments:**\n" + stored.map((s) => (TYPES[s.type].inline ? `- ![${s.name}](${s.url})` : `- [${s.name}](${s.url}) (${Math.ceil(s.size / 1024)} KB)`)).join("\n")
-      : "",
     "",
     "<sub>Submitted via the feedback form on primaaestate.cloud.</sub>",
-  ].filter((l) => l !== null).join("\n");
+  ].join("\n");
 
   const res = await gh(env, `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/issues`, {
     method: "POST",
@@ -178,30 +126,13 @@ async function handleStatus(req: Request, url: URL, env: Env, ctx: ExecutionCont
       if (!r.ok) return null;
       const i = (await r.json()) as any;
       // only expose issues this App created (not arbitrary repo issues / PRs)
-      if (i.pull_request || !i.performed_via_github_app || String(i.performed_via_github_app.id) !== String(env.GITHUB_APP_ID)) return null;
+      if (i.pull_request || i.user?.type !== "Bot" || i.user?.login !== `${env.GITHUB_APP_SLUG}[bot]`) return null;
       return { number: i.number, title: i.title, state: i.state, state_reason: i.state_reason, comments: i.comments, created_at: i.created_at, updated_at: i.updated_at, closed_at: i.closed_at, url: i.html_url };
     }),
   );
   const resp = json({ issues: issues.filter(Boolean) }, 200, { "Cache-Control": "public, max-age=60" });
   ctx.waitUntil(cache.put(cacheKey, resp.clone()));
   return resp;
-}
-
-async function handleAttachment(path: string, env: Env): Promise<Response> {
-  const key = path.slice(3);
-  if (!/^[a-f0-9]{40}\/[\w.\-]{1,80}$/.test(key)) return new Response("Not found", { status: 404 });
-  const obj = await env.ATTACHMENTS.get(key);
-  if (!obj) return new Response("Not found", { status: 404 });
-  const ext = (key.split(".").pop() || "").toLowerCase();
-  const t = TYPES[ext];
-  const h = new Headers();
-  h.set("Content-Type", t?.mime || "application/octet-stream");
-  h.set("Content-Disposition", `${t?.inline ? "inline" : "attachment"}; filename="${key.split("/")[1]}"`);
-  h.set("X-Content-Type-Options", "nosniff");
-  h.set("Content-Security-Policy", "default-src 'none'; img-src 'self'; sandbox");
-  h.set("Cache-Control", "public, max-age=31536000, immutable");
-  h.set("ETag", obj.httpEtag);
-  return new Response(obj.body, { headers: h });
 }
 
 export default {
@@ -216,8 +147,6 @@ export default {
         res = await handleSubmit(req, env);
       } else if (req.method === "GET" && url.pathname === "/status") {
         res = await handleStatus(req, url, env, ctx);
-      } else if (req.method === "GET" && url.pathname.startsWith("/a/")) {
-        return handleAttachment(url.pathname, env);
       } else if (req.method === "GET" && url.pathname === "/apps") {
         res = json(APPS, 200, { "Cache-Control": "public, max-age=3600" });
       } else {

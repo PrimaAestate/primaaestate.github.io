@@ -69,13 +69,33 @@ const headers = (token: string) => ({
   "User-Agent": "primaaestate-feedback-worker",
 });
 
-export async function installationToken(env: GhEnv): Promise<string> {
+let installationId: string | null = null;
+
+// Installation id comes from GITHUB_APP_INSTALLATION_ID; if it is missing or wrong (404),
+// fall back to looking up the App's installation on GITHUB_OWNER.
+async function findInstallation(env: GhEnv & { GITHUB_OWNER?: string }, jwt: string): Promise<string> {
+  const r = await fetch(`${api(env)}/app/installations`, { headers: headers(jwt) });
+  if (!r.ok) throw new Error(`list installations: HTTP ${r.status}`);
+  const list = (await r.json()) as { id: number; account: { login: string } }[];
+  const hit = list.find((i) => !env.GITHUB_OWNER || i.account.login.toLowerCase() === env.GITHUB_OWNER.toLowerCase()) ;
+  if (!hit) throw new Error("no installation for owner");
+  return String(hit.id);
+}
+
+export async function installationToken(env: GhEnv & { GITHUB_OWNER?: string }): Promise<string> {
   if (cached && cached.exp - Date.now() > 10 * 60 * 1000) return cached.token;
-  const res = await fetch(
-    `${api(env)}/app/installations/${env.GITHUB_APP_INSTALLATION_ID}/access_tokens`,
-    { method: "POST", headers: headers(await appJwt(env)) },
-  );
+  const jwt = await appJwt(env);
+  const mint = (id: string) =>
+    fetch(`${api(env)}/app/installations/${id}/access_tokens`, { method: "POST", headers: headers(jwt) });
+  let id = installationId || String(env.GITHUB_APP_INSTALLATION_ID || "").trim();
+  let res = id ? await mint(id) : null;
+  if (!res || res.status === 404) {
+    if (res) console.warn("installation id rejected (404); looking it up");
+    id = await findInstallation(env, jwt);
+    res = await mint(id);
+  }
   if (!res.ok) throw new Error(`installation token: HTTP ${res.status}`);
+  installationId = id;
   const j = (await res.json()) as { token: string; expires_at: string };
   cached = { token: j.token, exp: Date.parse(j.expires_at) };
   return j.token;
