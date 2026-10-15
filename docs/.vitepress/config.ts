@@ -63,6 +63,10 @@ export default defineConfig({
         icon: 'github',
         link: 'https://github.com/PrimaAestate',
       },
+      {
+        icon: 'x',
+        link: 'https://x.com/SummusTheSI',
+      },
     ],
     footer: {
       // message: 'Released under the MIT License.',
