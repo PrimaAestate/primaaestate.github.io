@@ -1,0 +1,106 @@
+[
+  {
+    "version": "1.2.0",
+    "date": "2026-09-30",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Bug Fixes\n\n- More reliable voice input and playback after listening to replies\n- Smoother chat layout with keyboard and dark/light appearance\n- More consistent character voices and clearer message bubbles\n- Polish for Settings, Tokens, and switching characters mid-chat\n\nFeatures\n\n- Voice messages: hold to talk, play back replies, optional auto-play\n- Refined chat composer, including the latest system look where available\n- Model settings and token top-ups\n- Clearer waiting state and voice-first replies when you speak\n\nPerformance Improvements\n\n- Snappier message list in long conversations"
+  },
+  {
+    "version": "1.1.1",
+    "date": "2026-01-29",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Features\n\n- Supports 37 languages"
+  },
+  {
+    "version": "1.1.0",
+    "date": "2026-01-19",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Features\n\n- Supports multiple languages"
+  },
+  {
+    "version": "1.0.14",
+    "date": "2026-01-16",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Bug Fixes\n\n- Character names are missing when accessing from history"
+  },
+  {
+    "version": "1.0.13",
+    "date": "2025-11-14",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "### Bug Fixes\n\n- Character names missing from history\n\n### Features\n\n- Optimize immersive experience\n- The improved style of the new system 26.0"
+  },
+  {
+    "version": "1.0.12",
+    "date": "2025-11-11",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Bug Fixes\n\n- Error message is not displayed correctly\n- An error occurred while parsing the content when the API component was empty\n\nImprovements\n\n- Optimize role-playing experience"
+  },
+  {
+    "version": "1.0.9",
+    "date": "2025-10-29",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Features:\n- Use the paid model gemini-2.5-flash-lite"
+  },
+  {
+    "version": "1.0.8",
+    "date": "2025-10-24",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Fixes\n- Fixed navigation title displaying incorrectly in System 26.\n- Resolved an issue where the chat error message could not be parsed.\n- Corrected the message prefix which was previously incorrect.\n- Fixed the potential incorrect display of the role name.\n\nFeatures\n- Added role name layout in the message display.\n- Implemented the use of the gemini-2.5-flash model."
+  },
+  {
+    "version": "1.0.5",
+    "date": "2025-04-28",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Improvements\n\n- Add custom Gemini API package\n- System instruction moved to the server"
+  },
+  {
+    "version": "1.0.4",
+    "date": "2025-04-24",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Bug Fixes\n\n- Header scaling animation is incorrect\n\nFeatures\n\n- Using custom protection API services"
+  },
+  {
+    "version": "1.0.3",
+    "date": "2025-01-06",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Fixes:\n- Restarting chat may crash\n- Cannot select hero in list\n- Deleting hero crashes\n- History does not work\n\nFeatures\n- Added toggle button\n\nImprovements:\n- Title animation and layout style"
+  },
+  {
+    "version": "1.0.2",
+    "date": "2024-12-26",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "- Added hero history switch\n- Added hero history management\n- Improved refresh animation\n- Fixed storage save/delete error\n- Fixed initial character error"
+  },
+  {
+    "version": "1.0",
+    "date": "2024-12-12",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": ""
+  }
+]

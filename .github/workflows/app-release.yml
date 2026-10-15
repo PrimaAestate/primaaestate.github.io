@@ -1,0 +1,41 @@
+name: App release changelog
+on:
+  repository_dispatch:
+    types: [app-release]
+concurrency:
+  group: site-deploy
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+      - name: Merge changelog entry
+        env:
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: |
+          printf '%s' "$PAYLOAD" > /tmp/payload.json
+          python3 scripts/merge-changelog.py /tmp/payload.json
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/changelogs
+          if git diff --cached --quiet; then echo "no change"; exit 0; fi
+          git commit -m "chore(changelog): ${{ github.event.client_payload.slug }} ${{ github.event.client_payload.version }}"
+          git push origin HEAD:master
+      # Pushes made with GITHUB_TOKEN don't trigger main.yml, so build and deploy here.
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+      - run: npm i
+      - run: npm run docs:build
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/.vitepress/dist
