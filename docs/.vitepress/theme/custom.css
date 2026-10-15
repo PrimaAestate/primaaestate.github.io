@@ -3,8 +3,8 @@
 .app-card:hover{border-color:var(--vp-c-brand-1)}
 .app-card img{width:64px;height:64px;border-radius:14px;flex:none}
 .app-card strong{display:block;font-size:16px}
-.app-card strong{margin-bottom:4px}
-.app-card span{display:block;font-size:13px;color:var(--vp-c-text-2);line-height:1.6}
+.app-card strong{margin-bottom:6px;line-height:1.4}
+.app-card span{display:block;font-size:14px;color:var(--vp-c-text-2);line-height:1.75}
 .app-hero{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin:8px 0 24px}
 .app-hero h1{margin:0!important}
 .app-icon{width:120px;height:120px;border-radius:26px}
