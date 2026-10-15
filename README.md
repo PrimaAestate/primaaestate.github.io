@@ -91,3 +91,15 @@ https://greasyfork.org/zh-CN/users/226081-yujinpan
 ## Tool Recommendation
 
 - [Just My Socks](https://justmysocks.net/members/aff.php?aff=31663) Stable proxy network provider
+
+## Refreshing app changelogs
+
+App pages read release history from `docs/data/changelogs/<slug>.json`, generated from App Store Connect (read-only):
+
+```sh
+pip install pyjwt cryptography requests
+ASC_KEY_ID=... ASC_ISSUER_ID=... ASC_PRIVATE_KEY="$(cat AuthKey_XXXX.p8)" python3 scripts/fetch-changelogs.py          # all apps
+python3 scripts/fetch-changelogs.py nomedia   # one app
+```
+
+Run it after each release, then commit the updated JSON.

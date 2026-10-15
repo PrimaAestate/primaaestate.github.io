@@ -15,6 +15,11 @@ head:
   - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/json-tree/og.jpg" }]
 ---
 
+<script setup>
+import Changelog from '../components/Changelog.vue';
+import changelog from '../data/changelogs/json-tree.json';
+</script>
+
 <div class="app-hero">
   <img class="app-icon" src="/img/apps/json-tree/icon.png" alt="JSON Tree icon" />
   <div>
@@ -38,3 +43,7 @@ head:
   <img src="/img/apps/json-tree/shot-2.jpg" alt="JSON Tree screenshot 2" loading="lazy" />
   <img src="/img/apps/json-tree/shot-3.jpg" alt="JSON Tree screenshot 3" loading="lazy" />
 </div>
+
+## What's New
+
+<Changelog :items="changelog" />

@@ -1,0 +1,34 @@
+[
+  {
+    "version": "1.0.8",
+    "date": "2025-10-29",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Bug Fixes:\n- Some menu items have language translation errors"
+  },
+  {
+    "version": "1.0.7",
+    "date": "2025-01-12",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Improvements:\n- Bundle size"
+  },
+  {
+    "version": "1.0.6",
+    "date": "2024-05-12",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "- Add mini screen style\n- Support screen top bar\n- Improve styles"
+  },
+  {
+    "version": "1.0",
+    "date": "2024-03-06",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": ""
+  }
+]

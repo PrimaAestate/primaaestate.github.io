@@ -15,6 +15,11 @@ head:
   - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/web-copilot/og.jpg" }]
 ---
 
+<script setup>
+import Changelog from '../components/Changelog.vue';
+import changelog from '../data/changelogs/web-copilot.json';
+</script>
+
 <div class="app-hero">
   <img class="app-icon" src="/img/apps/web-copilot/icon.png" alt="Web Copilot icon" />
   <div>
@@ -38,3 +43,7 @@ head:
   <img src="/img/apps/web-copilot/shot-3.jpg" alt="Web Copilot screenshot 3" loading="lazy" />
   <img src="/img/apps/web-copilot/shot-4.jpg" alt="Web Copilot screenshot 4" loading="lazy" />
 </div>
+
+## What's New
+
+<Changelog :items="changelog" />

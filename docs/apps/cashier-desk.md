@@ -15,6 +15,11 @@ head:
   - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/cashier-desk/og.jpg" }]
 ---
 
+<script setup>
+import Changelog from '../components/Changelog.vue';
+import changelog from '../data/changelogs/cashier-desk.json';
+</script>
+
 <div class="app-hero">
   <img class="app-icon" src="/img/apps/cashier-desk/icon.png" alt="Cashier Desk icon" />
   <div>
@@ -36,3 +41,7 @@ head:
 <div class="app-shots">
   <img src="/img/apps/cashier-desk/shot-1.jpg" alt="Cashier Desk screenshot 1" loading="lazy" />
 </div>
+
+## What's New
+
+<Changelog :items="changelog" />

@@ -15,6 +15,11 @@ head:
   - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/url-editor-portable/og.jpg" }]
 ---
 
+<script setup>
+import Changelog from '../components/Changelog.vue';
+import changelog from '../data/changelogs/url-editor-portable.json';
+</script>
+
 <div class="app-hero">
   <img class="app-icon" src="/img/apps/url-editor-portable/icon.png" alt="URL Editor Portable icon" />
   <div>
@@ -38,3 +43,7 @@ head:
   <img src="/img/apps/url-editor-portable/shot-2.jpg" alt="URL Editor Portable screenshot 2" loading="lazy" />
   <img src="/img/apps/url-editor-portable/shot-3.jpg" alt="URL Editor Portable screenshot 3" loading="lazy" />
 </div>
+
+## What's New
+
+<Changelog :items="changelog" />

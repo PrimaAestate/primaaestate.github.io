@@ -15,6 +15,11 @@ head:
   - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/nomedia/og.jpg" }]
 ---
 
+<script setup>
+import Changelog from '../components/Changelog.vue';
+import changelog from '../data/changelogs/nomedia.json';
+</script>
+
 <div class="app-hero">
   <img class="app-icon" src="/img/apps/nomedia/icon.png" alt="NoMedia icon" />
   <div>
@@ -36,3 +41,7 @@ head:
   <img src="/img/apps/nomedia/shot-1.jpg" alt="NoMedia screenshot 1" loading="lazy" />
   <img src="/img/apps/nomedia/shot-2.jpg" alt="NoMedia screenshot 2" loading="lazy" />
 </div>
+
+## What's New
+
+<Changelog :items="changelog" />

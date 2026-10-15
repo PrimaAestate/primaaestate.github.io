@@ -15,6 +15,11 @@ head:
   - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/console-mini/og.jpg" }]
 ---
 
+<script setup>
+import Changelog from '../components/Changelog.vue';
+import changelog from '../data/changelogs/console-mini.json';
+</script>
+
 <div class="app-hero">
   <img class="app-icon" src="/img/apps/console-mini/icon.png" alt="Console Mini icon" />
   <div>
@@ -39,3 +44,7 @@ head:
   <img src="/img/apps/console-mini/shot-3.jpg" alt="Console Mini screenshot 3" loading="lazy" />
   <img src="/img/apps/console-mini/shot-4.jpg" alt="Console Mini screenshot 4" loading="lazy" />
 </div>
+
+## What's New
+
+<Changelog :items="changelog" />
