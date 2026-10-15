@@ -1,0 +1,217 @@
+[
+  {
+    "version": "1.5.3",
+    "date": "2026-07-28",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- complete image network requests\n- honor forced appearance settings\n- preserve edited text nodes\n- stabilize network request capture\n- stabilize virtual table scrolling\n\nFeatures\n\n- add clear controls to filters\n- add console command completion"
+  },
+  {
+    "version": "1.5.2",
+    "date": "2026-04-01",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Blob XHR response parsing error\n- Transparent images cannot be distinguished from the background\n- When the requested URLs are the same, the response size and time are incorrect"
+  },
+  {
+    "version": "1.5.1",
+    "date": "2026-03-25",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Addressing issues with overcrowded display of deep DOM tree nodes and scrolling view jumping\n- Custom sizing in the simulator does not work when resizing or reloading\n- Error loading next page in JSON format\n- line-height should not be inherited\n- Tables or table child elements cannot be edited\n- The extension version number has not been updated\n- Unable to inspect pop-up layer DOM\n- When expanding child nodes, the element tree should maintain a complete row display"
+  },
+  {
+    "version": "1.5.0",
+    "date": "2026-03-14",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Emulator environment verification error\n- Incorrect pixel text in the simulator\n- Pseudo-node content parsing error\n- The emulator may experience display overflow when scrolling the page\n- The key path of the array child element is incorrectly encoded\n- The new window that opens from the simulator is the wrong size\n- The simulator should not be displayed when the window is opened from the simulator itself\n- The simulator type should be saved persistently\n- Use the Shadow DOM isolation simulator\n\nFeatures\n\n- Add a backup method when the emulator fails to open\n- Add a console main program to the emulator\n- Add a new icon for the device simulator\n- Add an exit button to the device simulator\n- Added device simulator functionality, supporting custom sizes\n- Continue to save the simulator state when the page reloads"
+  },
+  {
+    "version": "1.4.7",
+    "date": "2026-01-30",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- Supports 37 languages"
+  },
+  {
+    "version": "1.4.6",
+    "date": "2026-01-08",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- The box model border color is incorrect in light mode\n- The CSS styles are not ordered correctly\n- The group checkbox's hover color is incorrect\n- Unable to combine DOM elements in console message\n\nFeatures\n\n- Add an icon to the \"Copy Object\"\n- Display more inherited style properties in computed properties\n- Supports DOM structure and styles for pseudo-elements\n\nPerformance Improvements\n\n- Use pagination to preview large files (>800k)"
+  },
+  {
+    "version": "1.4.5",
+    "date": "2025-12-18",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Some object key resolution errors are appearing in the console panel\n- The non-empty object is not displayed correctly in the console\n- The window size is incorrect when re-entering after resizing"
+  },
+  {
+    "version": "1.4.4",
+    "date": "2025-12-15",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Console code lines misaligned\n- The main window may disappear when you move it\n\nFeatures\n\n- Add main panel reset in pop-up window\n- Supports displaying expanded objects in short names\n\nBug Fixes\n\n- Console code lines misaligned\n- Incorrect line breaks in style attributes during editing\n- Request duration less than zero\n\nFeatures\n\n- Improve the style of the style properties panel"
+  },
+  {
+    "version": "1.4.2",
+    "date": "2025-12-04",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Constructor properties should not be copied\n- FormData request details show an error\n- Hidden element display status incorrect\n- Unable to use the inspect function to locate reopened elements"
+  },
+  {
+    "version": "1.4.1",
+    "date": "2025-11-21",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- PromiseRejectionEvent parses crashes in the console"
+  },
+  {
+    "version": "1.4.0",
+    "date": "2025-11-14",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "### Bug Fixes\n\n- The console printouts are not parsing the correct style \n- The function type in the main environment is displayed incorrectly \n- The source code executed in the console is displayed incorrectly \n\n### Features\n\n- Supports automatic switching to a sandbox environment when code execution fails in the main environment \n- Supports displaying document objects in the console \n- Supports displaying recursive objects in the console \n- Supports executing code in the main environment via the console \n- Supports viewing DOM objects in the console \n- Use simple object names instead of detailed information in second-level object values \n\n### Performance Improvements\n\n- Add lazy loading to the element tree \n\n### Bug Fixes\n\n- Added error messages indicating that some cross-domain code could not be loaded \n- DOM CSS styles are not displayed correctly when switching elements \n- Issue with DOM edit boxes displaying abnormally when they have no content \n- Parsing deep objects may cause the console to crash \n- Style overwrite calculation error \n\n### Features\n\n- Add object code style to the console \n- Add object constructor name to the console \n- Adding resource loading error message display \n- Improved DOM editing style \n- Supports editing annotation style attributes \n\n### Bug Fixes\n\n- Some logs in the main container are showing errors \n- The measurement box still exists even after the DOM has been removed \n\n### Bug Fixes\n\n- Locating the DOM in the console sometimes doesn't work \n- The DOM tree should not be selected in the console \n- The error message \"Copy failed\" cannot be displayed \n- The parsing of elements without closing tags is incorrect \n\n### Features\n\n- Add autofocus functionality when the console is activated \n- Improve DOM inspection and location capabilities on mobile devices \n- Improved the display of output results when executing code in the console \n- Support disabling page zoom settings \n- Supports assigning any execution result set to a global variable in the console. \n- Supports displaying DOM nodes in the console and setting them as global variables \n- Supports displaying objects in the console \n- Supports locating elements in the console and element tree"
+  },
+  {
+    "version": "1.3.0",
+    "date": "2025-11-11",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Child nodes were removed when editing a DOM node\n- Page bounce issue when switching DOM elements\n- The element tree cannot be scrolled when displaying detailed information\n- The style property being edited is not updated when the focus is lost\n\nFeatures\n\n- Add basic DOM style property editing functionality\n- Add DOM style editing checkboxes and override functionality\n- Add editing/deleting/updating operations for inline styles\n- Added DOM output node editing function\n- Save the inspected element node to a console variable\n- Supports DOM tree node deletion operations"
+  },
+  {
+    "version": "1.2.9",
+    "date": "2025-10-29",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Improvements\n- Improved pop-up window layout style"
+  },
+  {
+    "version": "1.2.8",
+    "date": "2025-10-20",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- The image source type may be incorrect\n- The input control will automatically capitalize when typing"
+  },
+  {
+    "version": "1.2.7",
+    "date": "2025-08-14",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Saving user configuration may cause refresh cache crash"
+  },
+  {
+    "version": "1.2.6",
+    "date": "2025-08-12",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Registered events are not destroyed on shutdown\n- Should be not close when clearing storage\n- Storage list displayed incorrectly when clearing\n- Storage list is not updated when using delete/clear storage API\n- Storage list not refreshed when deleting items"
+  },
+  {
+    "version": "1.2.4",
+    "date": "2025-06-16",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Element styles are overlaid and ordered incorrectly\n- Element tree close tag is not displayed correctly when opening details\n- Text selection is not disabled when dragging the main element"
+  },
+  {
+    "version": "1.2.3",
+    "date": "2025-06-13",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- Add an element node inspector and show its location in the DOM tree \n- Add basic DOM tree display function \n- Add DOM tree node selection function \n- Add DOM tree style properties and computed property details \n- Add element node positioning and display box model \n- Save the interface settings of the element details panel \n- Support automatic positioning of element information box \n- Support dynamic update of element frame positioning \n- Support for showing applied CSS properties \n- Support to display css var color \n- Support html code style \n\nBug Fixes\n\n- Check buttons cannot toggle to selector when window resize \n- Dom box model mini-width incorrect \n- DOM tree node detail styling is incorrect on mobile devices \n- DOM tree should not be updated when attributes change \n- Element box model border radius is not displayed \n- Element inspector should ignore console frames \n- Element properties update slowly when using throttle \n- Element tree closing tag not showing \n- Global config \"Size\" cannot be saved \n- Menu creation and registration script errors not caught \n- Screen rulers overlap each other \n- Selected node is incorrect when the node changes \n- The box model arrow style in the upper right corner is incorrect \n- The element box model is not deleted when the pointer leaves \n- Inspect element interactions on mobile that conflict with touchmove/pointerdown events \n- Inspector icon incorrect on mobile \n- The default console panel is incorrect \n- Hide document custom properties \n- Inline element frame size is incorrect \n- Sometimes the inspector cannot locate the element \n- Copy object state name is too long \n\nPerformance Improvements\n\n- Automatically display the frame information of element nodes outside the view \n- Improve element attribute calculation efficiency \n- Improve element box model style \n- Improve element box model style \n- Improved display element box model and screen ruler \n- Show details only when dom is open"
+  },
+  {
+    "version": "1.1.2",
+    "date": "2025-05-21",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- Added basic source tree with keyword/category filter support\n- Added current line source tree highlighting\n- Added source tree icon\n- Added source tree details preview\n- Read source map from source file\n- Support \"Open in Source\" in network panel\n- Support switching between multiple files in bundle file source map\n- Support preview text line\n- Support error details in file, line and column format\n- Support more beautiful script/CSS code formatter\n\nImprovements\n\n- Improved preview text search interaction\n- Code font family uses \"Menlo, monospaced\"\n- Support mini layout for small screen main panel\n\nBug fixes\n\n- Clear request list errors\n- Code errors are not removed when switching to other files\n- Console details cannot be switched\n- Document source code is incorrect\n- Path name ending with \"/\" is incorrect\n- Error line/column position is incorrect during code formatting\n- Prevent switching when clicking on position other than icon\n- Incorrect root document path\n- Incorrect source tree icon when currently active\n- Source map parsing error when response is empty source\n- Unable to capture request when XHR rewrites\n- CSS source map parsing incorrectly\n- Incorrectly formatted code when including HTML tags\n- Incorrect toggling when bundle contains multiple source files\n- Select/button controls toggle incorrectly when parent container is resized\n- Button padding is misaligned on small screens\n- Button text overflows on small screens"
+  },
+  {
+    "version": "1.0.6",
+    "date": "2025-05-09",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Module script request not caught \n- Only update if the new value is the same \n- Preview response text style is incorrect \n- Request name not decoded \n- Request pathname format incorrect \n- Request time to fixed incorrect \n- Request URL is not normalized \n- Table content not updated when switching panels \n- The line wrapping interface for log messages is broken"
+  },
+  {
+    "version": "1.0.5",
+    "date": "2025-04-23",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Asynchronous insertion of CSS can cause some problems \n- Causes window to close after clearing local storage \n- Click events don't stop when dragging an element \n- Copy object button id error \n- Copying objects does not work in multi-level nodes \n- Displaying the copy object button conflicts with JSONTree \n- Duplicate copy object button, handle conflict with extension JSONTree \n- Enabling copy objects in multiple subpaths may fail \n- Extension request self not ignore \n- Filter header is misaligned in diff tab panel \n- Improve copy notify styles \n- Incorrect icon size \n- Incorrect virtual scrolling when appending new data \n- Local configuration is not synchronized between multiple pages of the same origin \n- Preview json search background color incorrect in dark/light mode \n- Preview JSON short name concatenation does not work in multi-level objects \n- Request ID duplicates when getting source code in diff world \n- Select/Button control styles are different on iOS and Mac \n- Sometimes \"unsafe-inline\" sources fail to apply stylesheets \n- Sometimes the window cannot be moved \n- Splitting static resources between iOS and macOS \n- Tree node collapse only click marker \n- Unable to expand objects in console list \n- Update request data cannot scroll to bottom \n- Use click events instead of pointerup \n- Virtual scrolling exception when row data changes \n\nFeatures\n\n- Add \"Copy Object\" in the right-click menu of preview json \n- Add base global config layout \n- Add global configuration for appearance/size \n- Add network list Double click to directly access URL \n- Keep network keywords when refreshing \n\nPerformance Improvements\n\n- Improve json short name preview"
+  },
+  {
+    "version": "1.0.3",
+    "date": "2025-04-10",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "### Bug Fixes\n\n- Table does not scroll on mobile devices\n- Camel case headers keys\n- Cloning larger data may slow things down\n- html details arrow icon not centered\n- Improve all scrollbar width styles\n- improve preview text styles\n- Preview json empty string does not render\n- Request details headers are not aligned with the list\n- Some text Blob not parsed\n- Sometimes xhr request does not respond\n- The 'unhandledrejection' event was not caught\n\n### Features\n\n- New app icons\n- Added preview text search\n- Support for resizing the console window on mobile devices\n- Support resizing of the Network Details and Storage Details windows on mobile devices\n- Support window/panel size recording\n\n### Performance Improvements\n\n- Improve json previewer multi-instance performance\n- Reduce page length to improve preview json performance\n- Table cell values are too large, causing switching to be slow"
+  },
+  {
+    "version": "1.0.2",
+    "date": "2025-04-10",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "### Bug Fixes\n\n- Camel case headers keys\n- Cloning larger data may slow things down\n- html details arrow icon not centered\n- Improve all scrollbar width styles\n- improve preview text styles\n- Preview json empty string does not render\n- Request details headers are not aligned with the list\n- Some text Blob not parsed\n- Sometimes xhr request does not respond\n- The 'unhandledrejection' event was not caught\n\n### Features\n\n- Added preview text search\n- Support for resizing the console window on mobile devices\n- Support resizing of the Network Details and Storage Details windows on mobile devices\n- Support window/panel size recording\n\n### Performance Improvements\n\n- Improve json previewer multi-instance performance\n- Reduce page length to improve preview json performance\n- Table cell values are too large, causing switching to be slow"
+  },
+  {
+    "version": "1.0",
+    "date": "2025-04-03",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": ""
+  }
+]

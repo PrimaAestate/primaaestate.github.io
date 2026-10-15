@@ -1,0 +1,83 @@
+[
+  {
+    "version": "1.1.4",
+    "date": "2026-01-30",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- Supports 37 languages"
+  },
+  {
+    "version": "1.1.3",
+    "date": "2026-01-21",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Incorrect parameters were generated when changing itself"
+  },
+  {
+    "version": "1.1.2",
+    "date": "2026-01-13",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Duplicate values should not be displayed\n- Incorrect selector style on mobile devices\n\nFeatures\n\n- Add a component selector for quick selection of basic information and parameters"
+  },
+  {
+    "version": "1.1.1",
+    "date": "2025-12-22",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Thanks to Natalia for the very practical advice.\n\nBug Fixes\n\n- Selecting href from history is incorrect\n- The auto-save option cannot save\n\nBug Fixes\n\n- When selecting the history component, some properties are not updated\n- When the option labels are too long, the pop-up window displays incorrectly\n\nFeatures\n\n- Add a history assignment feature for quick access to the history component\n- Add an option to automatically save history\n- Added a history feature, supporting automatic/manual recording"
+  },
+  {
+    "version": "1.0.5",
+    "date": "2025-10-29",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes:\n- Duplicate CSS classes in pop-up pages"
+  },
+  {
+    "version": "1.0.4",
+    "date": "2025-10-23",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- Icons adapted to system version 26"
+  },
+  {
+    "version": "1.0.3",
+    "date": "2025-02-17",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Fixed:\n- Extension version and description display incorrect"
+  },
+  {
+    "version": "1.0.2",
+    "date": "2025-01-09",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Fixes:\n- Incorrect popup width on iPad\n\nFeatures:\n- Added feedback entry\n\nImprovements:\n- All app icons"
+  },
+  {
+    "version": "1.0",
+    "date": "2025-01-08",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": ""
+  }
+]
