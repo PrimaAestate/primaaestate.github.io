@@ -6,16 +6,15 @@ so no token is ever shipped to the browser.
 
 | Route | |
 |---|---|
-| `POST /feedback` | multipart form: `app`, `summary?`, `description`, `email?`, `files*`, `cf-turnstile-response`, `website` (honeypot) → `{ ok, number, url }` |
+| `POST /feedback` | multipart form: `app`, `summary?`, `description`, `files*`, `cf-turnstile-response`, `website` (honeypot) → `{ ok, number, url }` |
 | `GET /status?ids=1,2` | state of up to 20 issues **created by this App** (cached 60 s) |
 | `GET /a/<key>/<name>` | attachment from R2 (images inline, others as download, sandboxed CSP) |
 | `GET /apps` | allowed app list (`src/apps.json`, keep in sync with `docs/data/apps.json`) |
 
 Checks: CORS/Origin allowlist (`ALLOWED_ORIGINS`), Turnstile siteverify, per-IP Rate Limiting binding (3/min submit, 30/min status),
-app allowlist, description 10–5000 chars, summary ≤120, optional email format; files ≤3, ≤5 MB each, ≤10 MB total,
+app allowlist, description 10–5000 chars, summary ≤120; files ≤3, ≤5 MB each, ≤10 MB total,
 png/jpg/gif/webp/heic/txt/log/zip with magic-byte / UTF-8 checks, random 40-hex R2 keys.
-User text is stripped of `@mentions` and raw HTML. **The email is never written to the issue**; it only goes into the
-owner notification email (`send_email` binding, optional; reply-to = user).
+User text is stripped of `@mentions` and raw HTML. No email or other personal data is collected; the owner is notified by GitHub's own issue notifications.
 
 ## Setup
 

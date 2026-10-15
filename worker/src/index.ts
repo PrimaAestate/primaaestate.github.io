@@ -6,13 +6,10 @@ interface Env extends GhEnv {
   GITHUB_OWNER: string;
   GITHUB_REPO: string;
   PUBLIC_BASE_URL: string;
-  NOTIFY_TO: string;
-  NOTIFY_FROM: string;
   TURNSTILE_SECRET: string;
   ATTACHMENTS: R2Bucket;
   SUBMIT_LIMIT: RateLimit;
   STATUS_LIMIT: RateLimit;
-  EMAIL?: SendEmail; // optional: Email Service send binding
 }
 
 const LIMITS = {
@@ -20,7 +17,6 @@ const LIMITS = {
   descMin: 10,
   descMax: 5000,
   versionMax: 40,
-  emailMax: 254,
   files: 3,
   fileBytes: 5 * 1024 * 1024,
   totalBytes: 10 * 1024 * 1024,
@@ -109,7 +105,7 @@ async function storeFiles(files: File[], env: Env): Promise<Stored[]> {
   return out;
 }
 
-async function handleSubmit(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+async function handleSubmit(req: Request, env: Env): Promise<Response> {
   const ip = req.headers.get("CF-Connecting-IP") || "";
   const { success } = await env.SUBMIT_LIMIT.limit({ key: `submit:${ip}` });
   if (!success) throw new HttpError(429, "rate_limited");
@@ -134,8 +130,6 @@ async function handleSubmit(req: Request, env: Env, ctx: ExecutionContext): Prom
   if (summary.length > LIMITS.summaryMax) throw new HttpError(400, "summary");
   if (!summary) summary = oneLine(description).slice(0, 80) + (oneLine(description).length > 80 ? "…" : "");
   const version = oneLine(str("version")).slice(0, LIMITS.versionMax);
-  const email = str("email").trim();
-  if (email && (email.length > LIMITS.emailMax || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) throw new HttpError(400, "email");
 
   const files = form.getAll("files").filter((f): f is File => typeof f !== "string");
   const stored = await storeFiles(files, env);
@@ -162,28 +156,6 @@ async function handleSubmit(req: Request, env: Env, ctx: ExecutionContext): Prom
   }
   const issue = (await res.json()) as { number: number; html_url: string };
 
-  if (env.EMAIL) {
-    ctx.waitUntil(
-      env.EMAIL.send({
-        from: { email: env.NOTIFY_FROM, name: "Prima Aestate Feedback" },
-        to: env.NOTIFY_TO,
-        ...(email ? { replyTo: email } : {}),
-        subject: `Feedback #${issue.number}: [${appName}] ${summary}`,
-        text: [
-          `New feedback #${issue.number}: ${issue.html_url}`,
-          `App: ${appName}${version ? ` ${version}` : ""}`,
-          `Contact email: ${email || "(not provided)"}`,
-          `Country: ${(req as any).cf?.country || "?"}`,
-          `Page: ${req.headers.get("Referer") || "?"}`,
-          `User-Agent: ${req.headers.get("User-Agent") || "?"}`,
-          "",
-          description,
-          "",
-          ...stored.map((s) => `Attachment: ${s.url}`),
-        ].join("\n"),
-      }).then(() => {}, (e: any) => console.error("notify email failed", e?.code, e?.message)),
-    );
-  }
   return json({ ok: true, number: issue.number, url: issue.html_url });
 }
 
@@ -241,7 +213,7 @@ export default {
       let res: Response;
       if (req.method === "POST" && url.pathname === "/feedback") {
         if (!c["Access-Control-Allow-Origin"]) throw new HttpError(403, "origin");
-        res = await handleSubmit(req, env, ctx);
+        res = await handleSubmit(req, env);
       } else if (req.method === "GET" && url.pathname === "/status") {
         res = await handleStatus(req, url, env, ctx);
       } else if (req.method === "GET" && url.pathname.startsWith("/a/")) {

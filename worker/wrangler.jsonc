@@ -10,9 +10,7 @@
     "ALLOWED_ORIGINS": "https://www.primaaestate.cloud,https://primaaestate.cloud,https://yujinpan.github.io",
     "GITHUB_OWNER": "PrimaAestate",
     "GITHUB_REPO": "feedback",
-    "PUBLIC_BASE_URL": "https://feedback.primaaestate.cloud",
-    "NOTIFY_TO": "support@primaaestate.cloud",
-    "NOTIFY_FROM": "feedback@primaaestate.cloud"
+    "PUBLIC_BASE_URL": "https://feedback.primaaestate.cloud"
   },
   // Secrets (wrangler secret put): GITHUB_APP_ID, GITHUB_APP_INSTALLATION_ID, GITHUB_APP_PRIVATE_KEY, TURNSTILE_SECRET
   "r2_buckets": [{ "binding": "ATTACHMENTS", "bucket_name": "primaaestate-feedback-attachments" }],
@@ -20,6 +18,4 @@
     { "name": "SUBMIT_LIMIT", "namespace_id": "1001", "simple": { "limit": 3, "period": 60 } },
     { "name": "STATUS_LIMIT", "namespace_id": "1002", "simple": { "limit": 30, "period": 60 } }
   ]
-  // Owner notification email (needs Email Service sending onboarded, Workers Paid):
-  // "send_email": [{ "name": "EMAIL", "allowed_sender_addresses": ["feedback@primaaestate.cloud"] }]
 }
