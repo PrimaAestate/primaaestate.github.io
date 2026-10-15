@@ -6,13 +6,13 @@ head:
   - [meta, { property: og:title, content: "NoMedia | Prima Aestate" }]
   - [meta, { property: og:description, content: "Remove images and media from Safari pages for cleaner, faster, data-saving reading." }]
   - [meta, { property: og:url, content: "https://www.primaaestate.cloud/apps/nomedia" }]
-  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/nomedia/og.jpg" }]
+  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/nomedia/og-v2.jpg" }]
   - [meta, { property: og:image:width, content: "1200" }]
   - [meta, { property: og:image:height, content: "630" }]
   - [meta, { name: twitter:card, content: summary_large_image }]
   - [meta, { name: twitter:title, content: "NoMedia | Prima Aestate" }]
   - [meta, { name: twitter:description, content: "Remove images and media from Safari pages for cleaner, faster, data-saving reading." }]
-  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/nomedia/og.jpg" }]
+  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/nomedia/og-v2.jpg" }]
 ---
 
 <script setup>
