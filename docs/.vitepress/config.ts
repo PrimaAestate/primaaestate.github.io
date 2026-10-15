@@ -54,6 +54,7 @@ export default defineConfig({
           { text: 'Cashier Desk', link: '/apps/cashier-desk' },
         ],
       },
+      { text: 'Updates', link: '/updates' },
       { text: 'Contact Us', link: 'mailto:support@primaaestate.cloud' },
       { text: 'Feedback', link: '/Feedback' },
       { text: 'Privacy Policy', link: '/PrivacyPolicy' },

@@ -5,7 +5,6 @@ Needs env ASC_KEY_ID, ASC_ISSUER_ID, ASC_PRIVATE_KEY (.p8 contents) and
 `pip install pyjwt cryptography requests`. Usage: python3 scripts/fetch-changelogs.py [slug ...]
 """
 import os, re, sys, json, time, textwrap
-import jwt, requests
 
 APPS = {
     "aestate": "6749141594", "nomedia": "6683300799", "web-copilot": "6755813748",
@@ -18,6 +17,7 @@ OUT = os.path.join(os.path.dirname(__file__), "..", "docs", "data", "changelogs"
 LIVE = ("READY_FOR_SALE", "REPLACED_WITH_NEW_VERSION", "READY_FOR_DISTRIBUTION")
 
 def token():
+    import jwt
     raw = os.environ["ASC_PRIVATE_KEY"]
     body = re.sub(r"-----[A-Z ]+-----", "", raw).replace("\\n", "").replace("\n", "").replace(" ", "")
     pem = "-----BEGIN PRIVATE KEY-----\n" + "\n".join(textwrap.wrap(body, 64)) + "\n-----END PRIVATE KEY-----\n"
@@ -27,6 +27,7 @@ def token():
 
 H = {}
 def get(path, **params):
+    import requests
     for _ in range(5):
         try:
             r = requests.get("https://api.appstoreconnect.apple.com" + path, headers=H, params=params, timeout=60)

@@ -92,14 +92,28 @@ https://greasyfork.org/zh-CN/users/226081-yujinpan
 
 - [Just My Socks](https://justmysocks.net/members/aff.php?aff=31663) Stable proxy network provider
 
-## Refreshing app changelogs
+## App changelogs
 
-App pages read release history from `docs/data/changelogs/<slug>.json`, generated from App Store Connect (read-only):
+App pages and `/updates` read release history from `docs/data/changelogs/<slug>.json`.
+
+**Automatic (on release):** each app repo has `.github/workflows/notify-site.yml`. Pushing a `v*` tag reads the
+version and en-US notes (`fastlane/i18n-release-notes.json`, falling back to `CHANGELOG.md`) and sends a
+`repository_dispatch` (`app-release`) to this repo with `{slug, version, date, notes}`.
+`.github/workflows/app-release.yml` here merges it (`scripts/merge-changelog.py`, upsert by version, Aestate wording
+filter), commits to `master`, then builds and deploys (a push made with `GITHUB_TOKEN` does not trigger `main.yml`).
+App repos need secret `SITE_DISPATCH_TOKEN`: a fine-grained PAT, repository access *PrimaAestate/primaaestate.github.io* only, permission *Contents: Read and write*.
+
+Test locally:
+
+```sh
+printf '%s' '{"slug":"nomedia","version":"9.9.9","date":"2026-01-01","notes":"Bug Fixes\n\n- Example"}' > /tmp/p.json
+python3 scripts/merge-changelog.py /tmp/p.json && git diff docs/data/changelogs
+```
+
+**Manual fallback / full rebuild from App Store Connect (read-only):**
 
 ```sh
 pip install pyjwt cryptography requests
 ASC_KEY_ID=... ASC_ISSUER_ID=... ASC_PRIVATE_KEY="$(cat AuthKey_XXXX.p8)" python3 scripts/fetch-changelogs.py          # all apps
 python3 scripts/fetch-changelogs.py nomedia   # one app
 ```
-
-Run it after each release, then commit the updated JSON.
