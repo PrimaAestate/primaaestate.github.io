@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.1.5",
+    "date": "2026-10-20",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "- Clearer Safari extension setup on iPhone, iPad and Mac, with guidance in 37 languages.\n- More reliable URL editing that preserves repeated parameters and query formatting.\n- Improved history selection and storage."
+  },
+  {
     "version": "1.1.4",
     "date": "2026-01-30",
     "platforms": [
