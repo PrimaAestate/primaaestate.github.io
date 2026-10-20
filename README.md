@@ -1,96 +1,43 @@
 # Welcome to Prima Aestate
 
-Here are some projects to help us live or work.
+Source of [www.primaaestate.cloud](https://www.primaaestate.cloud): lightweight apps for Mac, iPhone, iPad and Safari.
 
 ## Applications
 
-| Name                                                                                          | Description                                                                                        |
-|-----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| [Aestate](https://apps.apple.com/us/app/aestate/id6749141594?mt=12)                           | A lightweight proxy tool designed to minimize battery drain.                                       |
-| [Hello Hero](https://apps.apple.com/us/app/hello-heros/id6739343026)                          | Chat with your heroes.                                                                             |
-| [Console Mini](https://apps.apple.com/cn/app/console-mini/id6744146152?l=en-GB)               | A mini console for web development tools in Safari.                                                |
-| [URL Editor for Safari](https://apps.apple.com/us/app/url-editor-portable/id6740315748)       | Easily view and edit various contents of the URL.                                                  |
-| [JSON Tree for Safari](https://apps.apple.com/us/app/json-tree-for-safari/id6702017445?mt=12) | Display JSON Object tree for Safari.                                                               |
-| [NoMedia for Safari](https://apps.apple.com/us/app/nomedia/id6683300799)                      | Block all images, medias for Safari.                                                               |
-| [Learn English From Xinrong](https://yujinpan.github.io/learn-english-from-xinrong)           | Helps us review Xinrong video courses.                                                             |
-| [Geo Format Convert](https://yujinpan.github.io/format)                                       | -                                                                                                  |
-| [Download GeoJSON areas](https://yujinpan.github.io/format/#/geo/areas)                       | Supported multiple formats.                                                                        |
-| [Subscribes Transform](https://github.com/yujinpan/scripts)                                   | Supported JustMySocks to QuantumultX.                                                              |
-| [Cashier Desk](https://yujinpan.github.io/cashier-desk)                                       | Fully static localized Cashier. [AppStore](https://apps.apple.com/us/app/cashierdesk/id6478970861) |
-| [ChatGPT Web](https://yujinpan.github.io/chatgpt-web)                                         | ChatGPT web use Gemini. Built-in role play.                                                        |
+| Name | Description | Download |
+| --- | --- | --- |
+| [Aestate](https://www.primaaestate.cloud/apps/aestate) | A lightweight, stable and easy-to-use network tool for Mac, iPhone and iPad, designed to minimize battery drain. | [App Store](https://apps.apple.com/us/app/aestate/id6749141594) |
+| [NoMedia](https://www.primaaestate.cloud/apps/nomedia) | Remove images and media from Safari pages for cleaner, faster, data-saving reading. | [App Store](https://apps.apple.com/us/app/nomedia/id6683300799) |
+| [Web Copilot](https://www.primaaestate.cloud/apps/web-copilot) | Let AI take over the browser: open, analyze and manipulate web pages through dialogue. | [App Store](https://apps.apple.com/us/app/web-copilot/id6755813748) |
+| [Hello, Hero](https://www.primaaestate.cloud/apps/hello-hero) | Chat across time with historical figures, legendary heroes and opera stars. | [App Store](https://apps.apple.com/us/app/hello-hero/id6739343026) |
+| [Console Mini](https://www.primaaestate.cloud/apps/console-mini) | A mini web development tool for macOS and iOS Safari. | [App Store](https://apps.apple.com/us/app/console-mini/id6744146152) |
+| [URL Editor Portable](https://www.primaaestate.cloud/apps/url-editor-portable) | Easily view and edit every part of a URL: protocol, host, port, path and parameters. | [App Store](https://apps.apple.com/us/app/url-editor-portable/id6740315748) |
+| [JSON Tree](https://www.primaaestate.cloud/apps/json-tree) | A lightweight, blazing-fast JSON tree previewer with no external dependencies. | [App Store](https://apps.apple.com/us/app/json-tree/id6702017445) |
+| [Cashier Desk](https://www.primaaestate.cloud/apps/cashier-desk) | A fully offline order calculator with product, order and statistics management. | [App Store](https://apps.apple.com/us/app/cashier-desk/id6478970861) |
 
-## Vue Components
+Open-source projects are listed on [yujinpan.github.io](https://yujinpan.github.io/#vue-components).
 
-| Name                                                                             | Description                                                                | Website                                                                                            |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| [el-select-tree](https://github.com/yujinpan/el-select-tree)                     | ElementUI's el-select combined with el-tree.                               | [yujinpan.github.io/el-select-tree](https://yujinpan.github.io/el-select-tree)                     |
-| [el-table-infinite-scroll](https://github.com/yujinpan/el-table-infinite-scroll) | Infinite scroll for el-table.                                              | [yujinpan.github.io/el-table-infinite-scroll](https://yujinpan.github.io/el-table-infinite-scroll) |
-| [el-css-var](https://github.com/yujinpan/el-css-var)                             | ElementUI CSS Variables.                                                   | [yujinpan.github.io/el-css-var](https://yujinpan.github.io/el-css-var)                             |
-| [highlight-vue](https://github.com/yujinpan/highlight-vue)                       | highlight.js for vue component.                                            | [yujinpan.github.io/highlight-vue](https://yujinpan.github.io/highlight-vue)                       |
-| [v-charts-x](https://github.com/yujinpan/v-charts-x)                             | Upgrade [v-charts](https://github.com/ElemeFE/v-charts) support echarts@5. | [yujinpan.github.io/v-charts-x](https://yujinpan.github.io/v-charts-x)                             |
-| [v-title](https://github.com/yujinpan/v-title)                                   | Tooltip for vue directive.                                                 | [yujinpan.github.io/v-title](https://yujinpan.github.io/v-title)                                   |
-| [v-window](https://github.com/yujinpan/v-window)                                 | Make the element a "window"(movable/resizable).                            | [yujinpan.github.io/v-window](https://yujinpan.github.io/v-window)                                 |
-| [v-scroll-auto](https://github.com/yujinpan/v-scroll-auto)                       | Scroll auto for list.                                                      | [yujinpan.github.io/v-scroll-auto](https://yujinpan.github.io/v-scroll-auto)                       |
-| [el-popover](https://github.com/yujinpan/el-popover)                             | el-popover is used internally.                                             | [yujinpan.github.io/el-popover](https://yujinpan.github.io/el-popover)                             |
+## Pages
 
-## JS Library
+- `/`: app cards (`docs/index.md`).
+- `/apps/<slug>`: features, screenshots and What's New for each app (`docs/apps/<slug>.md`). Each page sets its own og/twitter share card, `docs/public/img/apps/<slug>/og.jpg` or `og-v2.jpg` (1200×630).
+- `/updates`: release notes for all apps, newest first.
+- `/Feedback`: feedback form. Submissions become public issues in [PrimaAestate/feedback](https://github.com/PrimaAestate/feedback) through the Cloudflare Worker in [`worker/`](worker/README.md). The app list is `docs/data/apps.json` (keep in sync with `worker/src/apps.json`).
+- `/PrivacyPolicy`.
 
-| Name                                                                           | Description                                       |
-| ------------------------------------------------------------------------------ | ------------------------------------------------- |
-| [operation-tree-node](https://github.com/yujinpan/operation-tree-node)         | Multiple methods of operating on tree structures. |
-| [vue-component-pluggable](https://github.com/yujinpan/vue-component-pluggable) | Make Vue component pluggable.                     |
-| [scripts](https://github.com/yujinpan/scripts)                                 | Some scripts.                                     |
+## Development
 
-## Frontend Builder
+Built with [VitePress](https://vitepress.dev).
 
-| Name                                           | Description                       |
-| ---------------------------------------------- | --------------------------------- |
-| [rollupx](https://github.com/yujinpan/rollupx) | js/ts/vue/scss/less to a library. |
+```sh
+npm i
+npm run docs:dev      # local preview
+npm run docs:build    # output: docs/.vitepress/dist
+```
 
-## Vue Component Develop Template
+## Deploy
 
-| Name                                                                   | Description                  |
-| ---------------------------------------------------------------------- | ---------------------------- |
-| [vue3-component-pack](https://github.com/yujinpan/vue3-component-pack) | Vue3 component to a library. |
-| [vue-component-pack](https://github.com/yujinpan/vue-component-pack)   | Vue2 component to a library. |
-
-## Node Utils
-
-| Name                                                                                           | Description                                 |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| [rollup-plugin-mdm](https://github.com/yujinpan/rollup-plugin-mdm)                             | Import markdown module for rollup & vite.   |
-| [fs-ops](https://github.com/yujinpan/fs-ops)                                                   | Operators for node files.                   |
-| [path-ops](https://github.com/yujinpan/path-ops)                                               | Operators for node path.                    |
-| [ext-migrator](https://github.com/yujinpan/ext-migrator)                                       | Complete or remove files extension.         |
-| [vite-plugin-ga](https://github.com/yujinpan/vite-plugin-ga)                                   | Vite Plugin GA.                             |
-| [vuepress-plugin-component-demo](https://github.com/yujinpan/vuepress-plugin-component-demo)   | Vuepress component demo block in markdown.  |
-| [vitepress-plugin-component-demo](https://github.com/yujinpan/vitepress-plugin-component-demo) | Vitepress component demo block in markdown. |
-| [vitepress-v2](https://github.com/yujinpan/vitepress-v2)                                       | Vitepress for vue2.                         |
-| [release-ops](https://github.com/yujinpan/release-ops)                                         | Project release operators.                  |
-
-## Icon Utils
-
-| Name                                                               | Description                                                 |
-| ------------------------------------------------------------------ | ----------------------------------------------------------- |
-| [vue-awesome-icons](https://github.com/yujinpan/vue-awesome-icons) | View/Download all svg icons (official website is too slow). |
-
-## Tampermonkey Extensions
-
-https://greasyfork.org/zh-CN/users/226081-yujinpan
-
-### Functions
-
-- restore text select(such as can not copy code in CSDN)
-- restore right-click(such as can not select code in CSDN)
-- images capture(support background image, useful for UI designer)
-- remove [电影天堂] website ads
-- remove google ads
-- show stock in hq.sinajs.cn
-- black and white website
-
-## Tool Recommendation
-
-- [Just My Socks](https://justmysocks.net/members/aff.php?aff=31663) Stable proxy network provider
+Pushing to `master` runs `.github/workflows/main.yml`, which builds the site and publishes `docs/.vitepress/dist` to the `gh-pages` branch (GitHub Pages). The custom domain is set in `docs/public/CNAME` (`www.primaaestate.cloud`).
 
 ## App changelogs
 
