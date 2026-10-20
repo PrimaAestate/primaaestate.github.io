@@ -6,13 +6,13 @@ head:
   - [meta, { property: og:title, content: "URL Editor Portable | Prima Aestate" }]
   - [meta, { property: og:description, content: "Easily view and edit every part of a URL: protocol, host, port, path and parameters." }]
   - [meta, { property: og:url, content: "https://www.primaaestate.cloud/apps/url-editor-portable" }]
-  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/url-editor-portable/og.jpg" }]
+  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/url-editor-portable/og-v2.jpg" }]
   - [meta, { property: og:image:width, content: "1200" }]
   - [meta, { property: og:image:height, content: "630" }]
   - [meta, { name: twitter:card, content: summary_large_image }]
   - [meta, { name: twitter:title, content: "URL Editor Portable | Prima Aestate" }]
   - [meta, { name: twitter:description, content: "Easily view and edit every part of a URL: protocol, host, port, path and parameters." }]
-  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/url-editor-portable/og.jpg" }]
+  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/url-editor-portable/og-v2.jpg" }]
 ---
 
 <script setup>
@@ -35,6 +35,7 @@ import changelog from '../data/changelogs/url-editor-portable.json';
 - View and edit parameters
 - Real-time synchronization while viewing and editing
 - Save and quickly retrieve history
+- Guided Safari extension setup on iPhone, iPad and Mac
 
 ## Screenshots
 
