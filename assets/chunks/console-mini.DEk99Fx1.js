@@ -1,4 +1,9 @@
-const e=[{version:"1.5.3",date:"2026-07-28",platforms:["iOS","macOS"],notes:`Bug Fixes
+const e=[{version:"1.5.4",date:"2026-10-21",platforms:["iOS","macOS"],notes:`- New Safari extension setup guide on iPhone, iPad and Mac, in 37 languages, with clear steps to enable the extension and allow website access.
+- Network: form data with repeated field names now shows every value.
+- Console: fixed outdated completion suggestions and wrong counts or filtering for repeated logs.
+- Fixed the floating window when dragging or resizing ends, simulator sizing, and restoring settings.
+- Fixed 0 and false showing as empty, search text being read as HTML, and request timing after a resource changes.
+- The Feedback link now opens the official website.`},{version:"1.5.3",date:"2026-07-28",platforms:["iOS","macOS"],notes:`Bug Fixes
 
 - complete image network requests
 - honor forced appearance settings
