@@ -1,4 +1,6 @@
-const e=[{version:"1.1.4",date:"2026-01-30",platforms:["iOS","macOS"],notes:`Features
+const e=[{version:"1.1.5",date:"2026-10-20",platforms:["iOS","macOS"],notes:`- Clearer Safari extension setup on iPhone, iPad and Mac, with guidance in 37 languages.
+- More reliable URL editing that preserves repeated parameters and query formatting.
+- Improved history selection and storage.`},{version:"1.1.4",date:"2026-01-30",platforms:["iOS","macOS"],notes:`Features
 
 - Supports 37 languages`},{version:"1.1.3",date:"2026-01-21",platforms:["iOS","macOS"],notes:`Bug Fixes
 
