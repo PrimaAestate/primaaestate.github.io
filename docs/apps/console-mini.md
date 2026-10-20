@@ -6,13 +6,13 @@ head:
   - [meta, { property: og:title, content: "Console Mini | Prima Aestate" }]
   - [meta, { property: og:description, content: "A mini web development tool for macOS and iOS Safari." }]
   - [meta, { property: og:url, content: "https://www.primaaestate.cloud/apps/console-mini" }]
-  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/console-mini/og.jpg" }]
+  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/console-mini/og-v2.jpg" }]
   - [meta, { property: og:image:width, content: "1200" }]
   - [meta, { property: og:image:height, content: "630" }]
   - [meta, { name: twitter:card, content: summary_large_image }]
   - [meta, { name: twitter:title, content: "Console Mini | Prima Aestate" }]
   - [meta, { name: twitter:description, content: "A mini web development tool for macOS and iOS Safari." }]
-  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/console-mini/og.jpg" }]
+  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/console-mini/og-v2.jpg" }]
 ---
 
 <script setup>
@@ -35,14 +35,17 @@ import changelog from '../data/changelogs/console-mini.json';
 - Console: view logs, test code and inspect objects
 - Requests: see every request of the current site with details
 - Storage: view local, session and cookie storage
+- Sources: view loaded source files and find errors by file, line and column
+- Simulator: preview pages at iPhone, iPad or custom sizes
+- Guided Safari extension setup on iPhone, iPad and Mac
 
 ## Screenshots
 
 <div class="app-shots">
-  <img src="/img/apps/console-mini/shot-1.jpg" alt="Console Mini screenshot 1" loading="lazy" />
-  <img src="/img/apps/console-mini/shot-2.jpg" alt="Console Mini screenshot 2" loading="lazy" />
-  <img src="/img/apps/console-mini/shot-3.jpg" alt="Console Mini screenshot 3" loading="lazy" />
-  <img src="/img/apps/console-mini/shot-4.jpg" alt="Console Mini screenshot 4" loading="lazy" />
+  <img src="/img/apps/console-mini/shot-1.jpg" alt="Console Mini screenshot: Console" loading="lazy" />
+  <img src="/img/apps/console-mini/shot-2.jpg" alt="Console Mini screenshot: Network" loading="lazy" />
+  <img src="/img/apps/console-mini/shot-3.jpg" alt="Console Mini screenshot: Elements" loading="lazy" />
+  <img src="/img/apps/console-mini/shot-4.jpg" alt="Console Mini screenshot: Sources (dark)" loading="lazy" />
 </div>
 
 ## What's New
