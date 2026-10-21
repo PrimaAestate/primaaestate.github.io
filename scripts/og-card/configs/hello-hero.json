@@ -1,0 +1,10 @@
+{
+  "name": "Hello, Hero",
+  "headline": "Talk to heroes.<br>Live their story.",
+  "sub": "History and legends, in any language.",
+  "bg": "linear-gradient(135deg,#f0a43a 0%,#d97a1e 55%,#b3570f 100%)",
+  "icon": "docs/public/img/apps/hello-hero/icon.png",
+  "screen": "scripts/og-card/screens/hello-hero.png",
+  "skip_top_pt": 0,
+  "out": "docs/public/img/apps/hello-hero/og-v3.jpg"
+}

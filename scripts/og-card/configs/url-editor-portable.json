@@ -1,0 +1,10 @@
+{
+  "name": "URL Editor Portable",
+  "headline": "Long URLs?<br>See every part.",
+  "sub": "View and edit any URL in Safari.",
+  "bg": "linear-gradient(135deg,#3b8cff 0%,#1a66f0 55%,#0b4fd1 100%)",
+  "icon": "docs/public/img/apps/url-editor-portable/icon.png",
+  "screen": "scripts/og-card/screens/url-editor-portable.png",
+  "skip_top_pt": 0,
+  "out": "docs/public/img/apps/url-editor-portable/og-v3.jpg"
+}
