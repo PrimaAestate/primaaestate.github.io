@@ -6,13 +6,13 @@ head:
   - [meta, { property: og:title, content: "Web Copilot | Prima Aestate" }]
   - [meta, { property: og:description, content: "Let AI take over the browser: open, analyze and manipulate web pages through dialogue." }]
   - [meta, { property: og:url, content: "https://www.primaaestate.cloud/apps/web-copilot" }]
-  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/web-copilot/og-v2.jpg" }]
+  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/web-copilot/og-v3.jpg" }]
   - [meta, { property: og:image:width, content: "1200" }]
   - [meta, { property: og:image:height, content: "630" }]
   - [meta, { name: twitter:card, content: summary_large_image }]
   - [meta, { name: twitter:title, content: "Web Copilot | Prima Aestate" }]
   - [meta, { name: twitter:description, content: "Let AI take over the browser: open, analyze and manipulate web pages through dialogue." }]
-  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/web-copilot/og-v2.jpg" }]
+  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/web-copilot/og-v3.jpg" }]
 ---
 
 <script setup>

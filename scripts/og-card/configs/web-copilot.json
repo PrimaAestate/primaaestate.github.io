@@ -1,0 +1,11 @@
+{
+  "name": "Web Copilot",
+  "headline": "Tell your browser<br>what to do.",
+  "sub": "Summarize pages and get things done.",
+  "bg": "linear-gradient(120deg,#e0729f 0%,#a67ac8 50%,#5785da 100%)",
+  "sub_ink": "rgba(255,255,255,.88)",
+  "icon": "docs/public/img/apps/web-copilot/icon.png",
+  "screen": "scripts/og-card/screens/web-copilot.png",
+  "skip_top_pt": 148,
+  "out": "docs/public/img/apps/web-copilot/og-v3.jpg"
+}

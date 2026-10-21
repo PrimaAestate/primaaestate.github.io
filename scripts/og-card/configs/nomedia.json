@@ -1,0 +1,11 @@
+{
+  "name": "NoMedia",
+  "headline": "Read the web<br>without the<br>noise.",
+  "sub": "Hide images and videos in Safari.",
+  "bg": "linear-gradient(133deg,#7a4ff0 0%,#6d3fea 50%,#532bc7 100%)",
+  "sub_ink": "rgba(255,255,255,.80)",
+  "icon": "docs/public/img/apps/nomedia/icon.png",
+  "screen": "scripts/og-card/screens/nomedia.png",
+  "skip_top_pt": 0,
+  "out": "docs/public/img/apps/nomedia/og-v3.jpg"
+}
