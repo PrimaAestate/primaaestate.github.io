@@ -6,13 +6,13 @@ head:
   - [meta, { property: og:title, content: "URL Editor Portable | Prima Aestate" }]
   - [meta, { property: og:description, content: "Easily view and edit every part of a URL: protocol, host, port, path and parameters." }]
   - [meta, { property: og:url, content: "https://www.primaaestate.cloud/apps/url-editor-portable" }]
-  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/url-editor-portable/og-v2.jpg" }]
+  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/url-editor-portable/og-v3.jpg" }]
   - [meta, { property: og:image:width, content: "1200" }]
   - [meta, { property: og:image:height, content: "630" }]
   - [meta, { name: twitter:card, content: summary_large_image }]
   - [meta, { name: twitter:title, content: "URL Editor Portable | Prima Aestate" }]
   - [meta, { name: twitter:description, content: "Easily view and edit every part of a URL: protocol, host, port, path and parameters." }]
-  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/url-editor-portable/og-v2.jpg" }]
+  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/url-editor-portable/og-v3.jpg" }]
 ---
 
 <script setup>

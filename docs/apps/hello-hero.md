@@ -6,13 +6,13 @@ head:
   - [meta, { property: og:title, content: "Hello, Hero | Prima Aestate" }]
   - [meta, { property: og:description, content: "Chat across time with historical figures, legendary heroes and opera stars." }]
   - [meta, { property: og:url, content: "https://www.primaaestate.cloud/apps/hello-hero" }]
-  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/hello-hero/og.jpg" }]
+  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/hello-hero/og-v3.jpg" }]
   - [meta, { property: og:image:width, content: "1200" }]
   - [meta, { property: og:image:height, content: "630" }]
   - [meta, { name: twitter:card, content: summary_large_image }]
   - [meta, { name: twitter:title, content: "Hello, Hero | Prima Aestate" }]
   - [meta, { name: twitter:description, content: "Chat across time with historical figures, legendary heroes and opera stars." }]
-  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/hello-hero/og.jpg" }]
+  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/hello-hero/og-v3.jpg" }]
 ---
 
 <script setup>
@@ -39,10 +39,10 @@ import changelog from '../data/changelogs/hello-hero.json';
 ## Screenshots
 
 <div class="app-shots">
-  <img src="/img/apps/hello-hero/shot-1.jpg" alt="Hello, Hero screenshot 1" loading="lazy" />
-  <img src="/img/apps/hello-hero/shot-2.jpg" alt="Hello, Hero screenshot 2" loading="lazy" />
-  <img src="/img/apps/hello-hero/shot-3.jpg" alt="Hello, Hero screenshot 3" loading="lazy" />
-  <img src="/img/apps/hello-hero/shot-4.jpg" alt="Hello, Hero screenshot 4" loading="lazy" />
+  <img src="/img/apps/hello-hero/shot-1.jpg" alt="Hello, Hero screenshot: Chat with a hero" loading="lazy" />
+  <img src="/img/apps/hello-hero/shot-2.jpg" alt="Hello, Hero screenshot: Hold to talk, hear them reply" loading="lazy" />
+  <img src="/img/apps/hello-hero/shot-3.jpg" alt="Hello, Hero screenshot: Switch heroes" loading="lazy" />
+  <img src="/img/apps/hello-hero/shot-4.jpg" alt="Hello, Hero screenshot: Chat history in dark mode" loading="lazy" />
 </div>
 
 ## What's New

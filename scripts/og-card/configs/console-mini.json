@@ -1,0 +1,10 @@
+{
+  "name": "Console Mini",
+  "headline": "Web DevTools.<br>Right in Safari.",
+  "sub": "Debug any page on iPhone, iPad and Mac.",
+  "bg": "linear-gradient(135deg,#12a594 0%,#0b7a8c 55%,#0a5675 100%)",
+  "icon": "docs/public/img/apps/console-mini/icon.png",
+  "screen": "scripts/og-card/screens/console-mini.png",
+  "skip_top_pt": 0,
+  "out": "docs/public/img/apps/console-mini/og-v3.jpg"
+}
