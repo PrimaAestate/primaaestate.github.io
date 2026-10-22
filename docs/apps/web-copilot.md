@@ -31,17 +31,19 @@ import changelog from '../data/changelogs/web-copilot.json';
 
 ## Features
 
-- Open pages via dialogue and customize parameters
-- Analyze and summarize page content via dialogue
-- Modify page content and styles via dialogue
+- Summarize the page you're reading and ask questions about it
+- Highlight answers right on the page
+- Describe a task and watch it fill in forms and click through the page, with each step shown and a Stop button
+- Open, switch and organize tabs and windows by chat
+- Light and dark mode on iPhone, iPad and Mac, with a built-in guide for turning on the Safari extension
 
 ## Screenshots
 
 <div class="app-shots">
-  <img src="/img/apps/web-copilot/shot-1.jpg" alt="Web Copilot screenshot 1" loading="lazy" />
-  <img src="/img/apps/web-copilot/shot-2.jpg" alt="Web Copilot screenshot 2" loading="lazy" />
-  <img src="/img/apps/web-copilot/shot-3.jpg" alt="Web Copilot screenshot 3" loading="lazy" />
-  <img src="/img/apps/web-copilot/shot-4.jpg" alt="Web Copilot screenshot 4" loading="lazy" />
+  <img src="/img/apps/web-copilot/shot-1.jpg" alt="Web Copilot screenshot: Read less. Know more." loading="lazy" />
+  <img src="/img/apps/web-copilot/shot-2.jpg" alt="Web Copilot screenshot: Ask the page. Answers, lit up." loading="lazy" />
+  <img src="/img/apps/web-copilot/shot-3.jpg" alt="Web Copilot screenshot: Say the task. Watch it work." loading="lazy" />
+  <img src="/img/apps/web-copilot/shot-4.jpg" alt="Web Copilot screenshot: Day or night. On every page." loading="lazy" />
 </div>
 
 ## What's New
