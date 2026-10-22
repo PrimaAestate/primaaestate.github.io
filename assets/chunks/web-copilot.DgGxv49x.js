@@ -1,4 +1,16 @@
-const e=[{version:"1.2.2",date:"2026-10-14",platforms:["iOS","macOS"],notes:`Features
+const e=[{version:"1.3.0",date:"2026-10-23",platforms:["iOS","macOS"],notes:`Features
+
+- New home screen with a Safari setup card that opens step-by-step instructions for turning on the extension
+- Setup steps match your device and system version on iPhone, iPad and Mac
+- Redesigned account section with your token balance and one-tap Restore Purchases
+- Page assistant waits until buttons and fields are ready before acting
+- Page assistant checks that each step worked and tells you when a result is uncertain
+
+Bug Fixes
+
+- Fewer repeated clicks and duplicate entries during page tasks
+- Clearer messages when the service is unavailable or an account is frozen
+- Error and progress messages now appear in your language`},{version:"1.2.2",date:"2026-10-14",platforms:["iOS","macOS"],notes:`Features
 
 - Page assistant is much faster and uses far fewer tokens
 - Better recognition of forms and options on web pages
