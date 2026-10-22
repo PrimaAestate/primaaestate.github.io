@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.3.0",
+    "date": "2026-10-23",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- New home screen with a Safari setup card that opens step-by-step instructions for turning on the extension\n- Setup steps match your device and system version on iPhone, iPad and Mac\n- Redesigned account section with your token balance and one-tap Restore Purchases\n- Page assistant waits until buttons and fields are ready before acting\n- Page assistant checks that each step worked and tells you when a result is uncertain\n\nBug Fixes\n\n- Fewer repeated clicks and duplicate entries during page tasks\n- Clearer messages when the service is unavailable or an account is frozen\n- Error and progress messages now appear in your language"
+  },
+  {
     "version": "1.2.2",
     "date": "2026-10-14",
     "platforms": [
