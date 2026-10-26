@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.2.5",
+    "date": "2026-10-27",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- Added the shared Safari extension setup guide\n- Feedback now opens the official website\n- Improved popup layout and dark-mode controls\n\nBug Fixes\n\n- Fixed the Mac setup window title hierarchy"
+  },
+  {
     "version": "1.2.4",
     "date": "2026-03-19",
     "platforms": [
