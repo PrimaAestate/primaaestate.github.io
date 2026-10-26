@@ -31,9 +31,11 @@ import changelog from '../data/changelogs/aestate.json';
 
 ## Features
 
-- Lightweight: built to minimize battery drain
-- Stable: keeps working reliably through network changes
-- Easy to use: clean, simple interface
+- Lightweight proxy that handles only proxy traffic to minimize battery drain
+- Servers and subscriptions: AnyTLS, VLESS, VMess, Trojan, Shadowsocks (REALITY / gRPC)
+- Enhanced Mode: optionally route WebRTC (STUN/ICE) through the proxy
+- Share configuration across devices, or an HTTP proxy on your LAN
+- Shortcuts and Siri for connect, Global Mode, and UDP Relay — on iPhone, iPad, Mac, and Apple TV
 
 ## Screenshots
 
