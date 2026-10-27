@@ -6,13 +6,13 @@ head:
   - [meta, { property: og:title, content: "JSON Tree | Prima Aestate" }]
   - [meta, { property: og:description, content: "A lightweight, blazing-fast JSON tree previewer with no external dependencies." }]
   - [meta, { property: og:url, content: "https://www.primaaestate.cloud/apps/json-tree" }]
-  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/json-tree/og.jpg" }]
+  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/json-tree/og-v2.jpg" }]
   - [meta, { property: og:image:width, content: "1200" }]
   - [meta, { property: og:image:height, content: "630" }]
   - [meta, { name: twitter:card, content: summary_large_image }]
   - [meta, { name: twitter:title, content: "JSON Tree | Prima Aestate" }]
   - [meta, { name: twitter:description, content: "A lightweight, blazing-fast JSON tree previewer with no external dependencies." }]
-  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/json-tree/og.jpg" }]
+  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/json-tree/og-v2.jpg" }]
 ---
 
 <script setup>
