@@ -38,8 +38,10 @@ import changelog from '../data/changelogs/nomedia.json';
 ## Screenshots
 
 <div class="app-shots">
-  <img src="/img/apps/nomedia/shot-1.jpg" alt="NoMedia screenshot 1" loading="lazy" />
-  <img src="/img/apps/nomedia/shot-2.jpg" alt="NoMedia screenshot 2" loading="lazy" />
+  <img src="/img/apps/nomedia/shot-1.jpg" alt="NoMedia screenshot: Focus" loading="lazy" />
+  <img src="/img/apps/nomedia/shot-2.jpg" alt="NoMedia screenshot: Website control" loading="lazy" />
+  <img src="/img/apps/nomedia/shot-3.jpg" alt="NoMedia screenshot: Captcha allowlist" loading="lazy" />
+  <img src="/img/apps/nomedia/shot-4.jpg" alt="NoMedia screenshot: Dark mode" loading="lazy" />
 </div>
 
 ## What's New
