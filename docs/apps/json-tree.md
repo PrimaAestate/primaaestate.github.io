@@ -39,9 +39,10 @@ import changelog from '../data/changelogs/json-tree.json';
 ## Screenshots
 
 <div class="app-shots">
-  <img src="/img/apps/json-tree/shot-1.jpg" alt="JSON Tree screenshot 1" loading="lazy" />
-  <img src="/img/apps/json-tree/shot-2.jpg" alt="JSON Tree screenshot 2" loading="lazy" />
-  <img src="/img/apps/json-tree/shot-3.jpg" alt="JSON Tree screenshot 3" loading="lazy" />
+  <img src="/img/apps/json-tree/shot-1.jpg" alt="JSON Tree screenshot: Tree" loading="lazy" />
+  <img src="/img/apps/json-tree/shot-2.jpg" alt="JSON Tree screenshot: Fold" loading="lazy" />
+  <img src="/img/apps/json-tree/shot-3.jpg" alt="JSON Tree screenshot: Copy" loading="lazy" />
+  <img src="/img/apps/json-tree/shot-4.jpg" alt="JSON Tree screenshot: Themes (dark)" loading="lazy" />
 </div>
 
 ## What's New
