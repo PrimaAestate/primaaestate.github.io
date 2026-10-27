@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.2.9",
+    "date": "2026-10-27",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- Popup controls share the new safari-web-ui chrome (clearer borders, dark surface, 320pt width)\n- Contextual tips and a Feedback link in the extension popup\n- Captcha allowlist page polish (focus outline, list and search)\n\nBug Fixes\n\n- Option row labels and checkbox size stay correct after shared-control refactor\n- Mac setup guide title hierarchy uses the enable-extension wording"
+  },
+  {
     "version": "1.2.8",
     "date": "2026-10-13",
     "platforms": [
