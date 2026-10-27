@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.2.6",
+    "date": "2026-10-27",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- Deeper row action buttons (Copy / Type) with clearer fill and borders\n- Copy confirmation now appears on the button (Copied) instead of a bottom toast\n- Control hover / active polish for tree and zoom controls"
+  },
+  {
     "version": "1.2.5",
     "date": "2026-10-27",
     "platforms": [
