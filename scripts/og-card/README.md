@@ -46,7 +46,7 @@ Config fields:
 
 The screens are not drawn here. Each one is a raw screen (1320×2868, iPhone 6.9" at @3x, top 62 pt reserved for the
 status bar) produced by **the app repo's store screenshot script**, copied into `screens/<slug>.png`. Screens use
-fictional content only.
+fictional content only. `screens/*.png` are **gitignored** on `master` (regenerable); keep them locally while iterating.
 
 ## Add or update a card
 
@@ -54,6 +54,14 @@ fictional content only.
    `screens/<slug>.png`.
 2. Add or edit `configs/<slug>.json` (copy an existing one). Adjust `skip_top_pt` if the important part of the
    screen is cut off at the bottom.
-3. Preview with `--out /tmp/<slug>.png`, then run without `--out` to write the card.
+3. Preview with `--out /tmp/<slug>.png`, then run without `--out` to write the card under
+   `docs/public/img/apps/<slug>/`.
 4. When the image changes, write it to a new file name (e.g. `og-v4.jpg`) and update both `og:image` and
    `twitter:image` in `docs/apps/<slug>.md`, so link previews cached by other sites pick up the new card.
+5. Publish site images to the orphan `assets` branch (not `master`):
+
+```sh
+./scripts/publish-assets.sh
+```
+
+CI syncs that branch into `docs/public/` on every deploy. See the repo root README.
