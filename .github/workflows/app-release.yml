@@ -29,6 +29,13 @@ jobs:
           git commit -m "chore(changelog): ${{ github.event.client_payload.slug }} ${{ github.event.client_payload.version }}"
           git push origin HEAD:master
       # Pushes made with GITHUB_TOKEN don't trigger main.yml, so build and deploy here.
+      - name: Sync site images from assets branch
+        run: |
+          set -euo pipefail
+          git fetch --depth=1 origin assets
+          git archive origin/assets | tar -x -C docs/public --exclude=README.md
+          test -f docs/public/og-default.jpg
+          test -d docs/public/img/apps
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -39,3 +46,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/.vitepress/dist
+          force_orphan: true

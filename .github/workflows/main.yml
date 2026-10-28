@@ -7,7 +7,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - name: Sync site images from assets branch
+        run: |
+          set -euo pipefail
+          git fetch --depth=1 origin assets
+          # Branch root is img/ + og-default.jpg (+ README); extract into docs/public/
+          git archive origin/assets | tar -x -C docs/public --exclude=README.md
+          test -f docs/public/og-default.jpg
+          test -d docs/public/img/apps
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -20,3 +28,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/.vitepress/dist
+          force_orphan: true

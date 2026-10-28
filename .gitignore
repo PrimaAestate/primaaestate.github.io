@@ -3,3 +3,11 @@ docs/.vitepress/dist
 docs/.vitepress/cache
 .idea
 __pycache__
+
+# Site marketing images live on the orphan `assets` branch (synced into docs/public/ in CI).
+# Keep local copies for docs:dev / publishing; do not track on master.
+docs/public/img/
+docs/public/og-default.jpg
+
+# Regenerable OG source screens (not needed for Pages).
+scripts/og-card/screens/
