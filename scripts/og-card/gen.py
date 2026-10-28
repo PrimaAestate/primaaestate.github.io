@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the 1200x630 og/twitter share cards for the app pages (docs/public/img/apps/<slug>/og-v3.jpg).
+"""Generate the 1200x630 og/twitter share cards for the app pages (docs/public/img/apps/<slug>/og.jpg).
 
 Layout: brand + headline + subline on the left, a generic CSS-drawn phone on the right
 (no Apple device frames, no Apple-shaped notch / island; a small round camera dot; Inter text).

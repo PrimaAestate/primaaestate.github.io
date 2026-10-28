@@ -1,7 +1,7 @@
 # Share cards (og-card)
 
 Generates the 1200×630 og/twitter share cards for the app pages:
-`docs/public/img/apps/<slug>/og-v3.jpg`. Each `docs/apps/<slug>.md` points its `og:image` and `twitter:image` at that file.
+`docs/public/img/apps/<slug>/og.jpg`. Each `docs/apps/<slug>.md` points its `og:image` and `twitter:image` at that file.
 
 The card shows the app icon and name, a headline and a subline on the left, and the app screen inside a generic
 CSS-drawn phone on the right (round camera dot, generic status bar). No Apple device frames or Apple fonts are used.
@@ -17,7 +17,7 @@ Requirements:
 - The [Inter](https://github.com/rsms/inter) font installed on the system (SIL OFL 1.1; not committed here)
 
 ```sh
-python3 scripts/og-card/gen.py                    # all cards, writes docs/public/img/apps/<slug>/og-v3.jpg
+python3 scripts/og-card/gen.py                    # all cards, writes docs/public/img/apps/<slug>/og.jpg
 python3 scripts/og-card/gen.py hello-hero         # one card
 python3 scripts/og-card/gen.py hello-hero --out /tmp/hh.png   # preview without touching docs/
 ```
@@ -56,8 +56,9 @@ fictional content only. `screens/*.png` are **gitignored** on `master` (regenera
    screen is cut off at the bottom.
 3. Preview with `--out /tmp/<slug>.png`, then run without `--out` to write the card under
    `docs/public/img/apps/<slug>/`.
-4. When the image changes, write it to a new file name (e.g. `og-v4.jpg`) and update both `og:image` and
-   `twitter:image` in `docs/apps/<slug>.md`, so link previews cached by other sites pick up the new card.
+4. Overwrite `docs/public/img/apps/<slug>/og.jpg` (do not add `og-vN.jpg` version suffixes). Keep
+   `og:image` / `twitter:image` pointing at that fixed URL. CDNs and link crawlers may keep an old card
+   until they re-fetch; optional `?v=` on the meta URL can force a bust if needed.
 5. Publish site images to the orphan `assets` branch (not `master`):
 
 ```sh

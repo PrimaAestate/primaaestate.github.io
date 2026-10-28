@@ -6,5 +6,5 @@
   "icon": "docs/public/img/apps/console-mini/icon.png",
   "screen": "scripts/og-card/screens/console-mini.png",
   "skip_top_pt": 0,
-  "out": "docs/public/img/apps/console-mini/og-v3.jpg"
+  "out": "docs/public/img/apps/console-mini/og.jpg"
 }
