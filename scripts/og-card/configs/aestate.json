@@ -8,5 +8,5 @@
   "icon": "docs/public/img/apps/aestate/icon.png",
   "screen": "scripts/og-card/screens/aestate.png",
   "skip_top_pt": 0,
-  "out": "docs/public/img/apps/aestate/og-v3.jpg"
+  "out": "docs/public/img/apps/aestate/og.jpg"
 }

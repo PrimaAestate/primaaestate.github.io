@@ -6,13 +6,13 @@ head:
   - [meta, { property: og:title, content: "Hello, Hero | Prima Aestate" }]
   - [meta, { property: og:description, content: "Chat across time with historical figures, legendary heroes and opera stars." }]
   - [meta, { property: og:url, content: "https://www.primaaestate.cloud/apps/hello-hero" }]
-  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/hello-hero/og-v3.jpg" }]
+  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/hello-hero/og.jpg" }]
   - [meta, { property: og:image:width, content: "1200" }]
   - [meta, { property: og:image:height, content: "630" }]
   - [meta, { name: twitter:card, content: summary_large_image }]
   - [meta, { name: twitter:title, content: "Hello, Hero | Prima Aestate" }]
   - [meta, { name: twitter:description, content: "Chat across time with historical figures, legendary heroes and opera stars." }]
-  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/hello-hero/og-v3.jpg" }]
+  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/hello-hero/og.jpg" }]
 ---
 
 <script setup>

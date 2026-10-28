@@ -6,13 +6,13 @@ head:
   - [meta, { property: og:title, content: "Console Mini | Prima Aestate" }]
   - [meta, { property: og:description, content: "A mini web development tool for macOS and iOS Safari." }]
   - [meta, { property: og:url, content: "https://www.primaaestate.cloud/apps/console-mini" }]
-  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/console-mini/og-v3.jpg" }]
+  - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/console-mini/og.jpg" }]
   - [meta, { property: og:image:width, content: "1200" }]
   - [meta, { property: og:image:height, content: "630" }]
   - [meta, { name: twitter:card, content: summary_large_image }]
   - [meta, { name: twitter:title, content: "Console Mini | Prima Aestate" }]
   - [meta, { name: twitter:description, content: "A mini web development tool for macOS and iOS Safari." }]
-  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/console-mini/og-v3.jpg" }]
+  - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/console-mini/og.jpg" }]
 ---
 
 <script setup>

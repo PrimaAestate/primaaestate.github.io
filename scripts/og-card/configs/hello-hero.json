@@ -6,5 +6,5 @@
   "icon": "docs/public/img/apps/hello-hero/icon.png",
   "screen": "scripts/og-card/screens/hello-hero.png",
   "skip_top_pt": 0,
-  "out": "docs/public/img/apps/hello-hero/og-v3.jpg"
+  "out": "docs/public/img/apps/hello-hero/og.jpg"
 }

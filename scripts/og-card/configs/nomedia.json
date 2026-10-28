@@ -7,5 +7,5 @@
   "icon": "docs/public/img/apps/nomedia/icon.png",
   "screen": "scripts/og-card/screens/nomedia.png",
   "skip_top_pt": 0,
-  "out": "docs/public/img/apps/nomedia/og-v4.jpg"
+  "out": "docs/public/img/apps/nomedia/og.jpg"
 }
