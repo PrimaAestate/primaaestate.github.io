@@ -6,7 +6,7 @@ Source of [www.primaaestate.cloud](https://www.primaaestate.cloud): lightweight 
 
 | Name | Description | Download |
 | --- | --- | --- |
-| [Aestate](https://www.primaaestate.cloud/apps/aestate) | A lightweight, stable and easy-to-use network tool for Mac, iPhone and iPad, designed to minimize battery drain. | [App Store](https://apps.apple.com/us/app/aestate/id6749141594) |
+| [Aestate](https://www.primaaestate.cloud/apps/aestate) | A lightweight, stable and easy-to-use network tool for Mac, iPhone, iPad and Apple TV, designed to minimize battery drain. | [App Store](https://apps.apple.com/us/app/aestate/id6749141594) |
 | [NoMedia](https://www.primaaestate.cloud/apps/nomedia) | Remove images and media from Safari pages for cleaner, faster, data-saving reading. | [App Store](https://apps.apple.com/us/app/nomedia/id6683300799) |
 | [Web Copilot](https://www.primaaestate.cloud/apps/web-copilot) | Let AI take over the browser: open, analyze and manipulate web pages through dialogue. | [App Store](https://apps.apple.com/us/app/web-copilot/id6755813748) |
 | [Hello, Hero](https://www.primaaestate.cloud/apps/hello-hero) | Chat across time with historical figures, legendary heroes and opera stars. | [App Store](https://apps.apple.com/us/app/hello-hero/id6739343026) |

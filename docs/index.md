@@ -13,7 +13,7 @@ Lightweight apps for Mac, iPhone, iPad and Safari.
 <div class="app-grid">
   <a class="app-card" href="/apps/aestate">
     <img src="/img/apps/aestate/icon.png" alt="Aestate" />
-    <div><strong>Aestate</strong><span>A lightweight, stable and easy-to-use network tool for Mac, iPhone and iPad, designed to minimize battery drain.</span></div>
+    <div><strong>Aestate</strong><span>A lightweight, stable and easy-to-use network tool for Mac, iPhone, iPad and Apple TV, designed to minimize battery drain.</span></div>
   </a>
   <a class="app-card" href="/apps/nomedia">
     <img src="/img/apps/nomedia/icon.png" alt="NoMedia" />
