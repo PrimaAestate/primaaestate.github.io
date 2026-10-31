@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.2.0",
+    "date": "2026-10-31",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Updates\n\n- Refreshed popup: a translucent look drawn by Safari, Apply and Reset always within reach at the top, a tidier history section, and Feedback moved to the bottom.\n- Wider popup on iPad and Mac. Controls no longer overlap the toolbar or cut off text.\n- The app and its Safari extension are now called URL Editor. On Mac, the setup window title now matches the setup screen on iPhone and iPad."
+  },
+  {
     "version": "1.1.5",
     "date": "2026-10-20",
     "platforms": [
