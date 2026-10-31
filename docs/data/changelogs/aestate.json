@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.7.0",
+    "date": "2026-10-30",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- More reliable DNS after network changes and when local port 53 is in use, such as by Personal Hotspot.\n- macOS: The menu bar now opens the correct copy of the app.\n\nFeatures\n\n- Apple TV: A new lightweight tvOS client. Share your configuration between devices via iCloud or the local network.\n- IP-CIDR rule files now refresh silently in the background.\n- Activity shows local DNS results alongside Fake-IP.\n\nPerformance Improvements\n\n- Less redundant DNS and connection pool work, and a cap on diagnostic history."
+  },
+  {
     "version": "1.6.2",
     "date": "2026-10-14",
     "platforms": [
