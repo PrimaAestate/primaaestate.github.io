@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.3.1",
+    "date": "2026-11-02",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- Refreshed popup with a translucent look that matches Safari, clearer message bubbles and controls in light and dark mode\n\nBug Fixes\n\n- On iPhone and iPad, the page no longer zooms in while you type in the page chat, and the keyboard opens only when you tap the input\n- Popup settings wrap neatly in longer languages instead of being cut off\n- The chat history menu fits within the popup\n- The setup card on the home screen no longer repeats the app name\n- Smaller download size"
+  },
+  {
     "version": "1.3.0",
     "date": "2026-10-23",
     "platforms": [
