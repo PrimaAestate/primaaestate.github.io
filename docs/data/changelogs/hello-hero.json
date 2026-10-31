@@ -1,5 +1,13 @@
 [
   {
+    "version": "1.2.1",
+    "date": "2026-10-11",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Bug Fixes\n\n- Clearer messages when the service is busy, offline, or a purchase needs attention\n\nFeatures\n\n- Upgraded, more secure connection to our AI service — no account needed\n- Your token balance is now stored securely on our servers\n- Purchased tokens are added once the purchase is confirmed; interrupted purchases resume automatically\n- Requires iOS 16 or later\n- Balances from earlier versions aren't carried over automatically. If you had a balance, contact us at primaaestate.cloud"
+  },
+  {
     "version": "1.2.0",
     "date": "2026-09-30",
     "platforms": [
