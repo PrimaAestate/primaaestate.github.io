@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.6.0",
+    "date": "2026-10-31",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Updates\n\n- Refreshed popup: a translucent look drawn by Safari, refined options and checkboxes, and Reset and Feedback grouped at the bottom. Tips now appear in Help and in the empty Network panel.\n- Smoother on busy pages: request and response bodies over 5 MB are skipped and their size is shown instead, long lists are capped, and the Elements tree updates only while its panel is open.\n- Fixed memory leaks and missed requests during long sessions.\n- On iPhone and iPad, typing in the console, filters or editable fields no longer zooms the page.\n- On Mac, the setup window title now matches the setup screen on iPhone and iPad."
+  },
+  {
     "version": "1.5.4",
     "date": "2026-10-21",
     "platforms": [
