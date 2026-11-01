@@ -5,6 +5,6 @@
   "bg": "linear-gradient(135deg,#3b8cff 0%,#1a66f0 55%,#0b4fd1 100%)",
   "icon": "docs/public/img/apps/url-editor-portable/icon.png",
   "screen": "scripts/og-card/screens/url-editor-portable.png",
-  "skip_top_pt": 0,
+  "skip_top_pt": 250,
   "out": "docs/public/img/apps/url-editor-portable/og.jpg"
 }
