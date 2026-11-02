@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.7.1",
+    "date": "2026-11-02",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Bug Fixes\n\n- Websites open faster: fixed DNS replies that could be dropped and resent, adding about a second of delay.\n- iOS: After moving from cellular back to Wi-Fi, direct traffic uses Wi-Fi again instead of staying on cellular.\n- Blocked IPv6 connections now fail immediately, so apps switch to IPv4 without waiting.\n\nPerformance Improvements\n\n- DNS: About 7% less CPU for local answers and 5% less for upstream queries.\n- Fewer repeated IPv6 DNS lookups, as the system now caches empty answers."
+  },
+  {
     "version": "1.6.2",
     "date": "2026-10-14",
     "platforms": [
