@@ -1,10 +1,11 @@
 {
   "name": "Aestate",
   "headline": "Lightweight. Stable.<br>Barely touches your<br>battery.",
-  "sub": "For iPhone, iPad and Mac.",
+  "sub": "For iPhone, iPad, Mac and Apple TV.",
   "bg": "#0d0d0d",
   "sub_ink": "rgba(255,255,255,.62)",
-  "screen_bg": "#f2f2f7",
+  "screen_bg": "#161618",
+  "status_ink": "#f5f5f7",
   "icon": "docs/public/img/apps/aestate/icon.png",
   "screen": "scripts/og-card/screens/aestate.png",
   "skip_top_pt": 0,

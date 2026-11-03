@@ -13,7 +13,7 @@ export default defineConfig({
   sitemap: { hostname: SITE },
   head: [
     ['meta', { property: 'og:site_name', content: 'Prima Aestate' }],
-    ['meta', { name: 'twitter:site', content: '@SummusTheSI' }],
+    ['meta', { name: 'twitter:site', content: '@Bellis_Light' }],
   ],
   transformHead({ pageData }) {
     // site-wide defaults for pages without their own og tags
@@ -66,7 +66,7 @@ export default defineConfig({
       },
       {
         icon: 'x',
-        link: 'https://x.com/SummusTheSI',
+        link: 'https://x.com/Bellis_Light',
       },
     ],
     footer: {
