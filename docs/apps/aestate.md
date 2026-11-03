@@ -1,17 +1,17 @@
 ---
 title: Aestate
-description: "A lightweight, stable and easy-to-use network tool for Mac, iPhone and iPad, designed to minimize battery drain."
+description: "A lightweight, stable and easy-to-use network tool for iPhone, iPad, Mac and Apple TV, designed to minimize battery drain."
 head:
   - [meta, { property: og:type, content: website }]
   - [meta, { property: og:title, content: "Aestate | Prima Aestate" }]
-  - [meta, { property: og:description, content: "A lightweight, stable and easy-to-use network tool for Mac, iPhone and iPad, designed to minimize battery drain." }]
+  - [meta, { property: og:description, content: "A lightweight, stable and easy-to-use network tool for iPhone, iPad, Mac and Apple TV, designed to minimize battery drain." }]
   - [meta, { property: og:url, content: "https://www.primaaestate.cloud/apps/aestate" }]
   - [meta, { property: og:image, content: "https://www.primaaestate.cloud/img/apps/aestate/og.jpg" }]
   - [meta, { property: og:image:width, content: "1200" }]
   - [meta, { property: og:image:height, content: "630" }]
   - [meta, { name: twitter:card, content: summary_large_image }]
   - [meta, { name: twitter:title, content: "Aestate | Prima Aestate" }]
-  - [meta, { name: twitter:description, content: "A lightweight, stable and easy-to-use network tool for Mac, iPhone and iPad, designed to minimize battery drain." }]
+  - [meta, { name: twitter:description, content: "A lightweight, stable and easy-to-use network tool for iPhone, iPad, Mac and Apple TV, designed to minimize battery drain." }]
   - [meta, { name: twitter:image, content: "https://www.primaaestate.cloud/img/apps/aestate/og.jpg" }]
 ---
 
@@ -24,7 +24,7 @@ import changelog from '../data/changelogs/aestate.json';
   <img class="app-icon" src="/img/apps/aestate/icon.png" alt="Aestate icon" />
   <div>
     <h1>Aestate</h1>
-    <p class="app-pitch">A lightweight, stable and easy-to-use network tool for Mac, iPhone and iPad, designed to minimize battery drain.</p>
+    <p class="app-pitch">A lightweight, stable and easy-to-use network tool for iPhone, iPad, Mac and Apple TV, designed to minimize battery drain.</p>
     <a class="app-store-btn" href="https://apps.apple.com/us/app/aestate/id6749141594" target="_blank" rel="noopener">Download on the App Store</a>
   </div>
 </div>
