@@ -66,7 +66,7 @@ export default defineConfig({
       },
       {
         icon: 'x',
-        link: 'https://x.com/SummusTheSI',
+        link: 'https://x.com/Bellis_Light',
       },
     ],
     footer: {
