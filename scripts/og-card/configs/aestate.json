@@ -4,7 +4,7 @@
   "sub": "For iPhone, iPad, Mac and Apple TV.",
   "bg": "#0d0d0d",
   "sub_ink": "rgba(255,255,255,.62)",
-  "screen_bg": "#161618",
+  "screen_bg": "#000000",
   "status_ink": "#f5f5f7",
   "icon": "docs/public/img/apps/aestate/icon.png",
   "screen": "scripts/og-card/screens/aestate.png",
