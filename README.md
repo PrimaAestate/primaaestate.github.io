@@ -80,3 +80,38 @@ pip install pyjwt cryptography requests
 ASC_KEY_ID=... ASC_ISSUER_ID=... ASC_PRIVATE_KEY="$(cat AuthKey_XXXX.p8)" python3 scripts/fetch-changelogs.py          # all apps
 python3 scripts/fetch-changelogs.py nomedia   # one app
 ```
+
+## Server-side updates (reviewed separately from app releases)
+
+The existing app-page changelog and `/updates` also render
+`docs/data/server-updates/<slug>.json`. Keep service notes separate from
+`docs/data/changelogs/`: App Store imports and `app-release` dispatches own the
+app files and must not overwrite service history. There is no server-release
+dispatch or automatic backend-tag integration. Do not invoke the app-release
+workflow for a service deployment; it writes directly to `master`.
+
+Each server row has an actual rollout `date` (`YYYY-MM-DD`) and plain-text
+`notes`. An optional `version` may identify a **verified server tag for that
+rollout** in future; it is never an App Store version. Until a matching server
+tag exists, omit it: the UI says **Server update** and shows the date. A stale
+latest tag or a package.json version is not evidence of a deployment version.
+
+### Customer-visible service release checklist
+
+- After a verified service rollout, explicitly decide whether model availability,
+  token deductions, voice pricing, or other user-visible behavior needs a site
+  update. Document “no customer-visible change” when no entry is needed.
+- Prepare a website PR for each affected app's server-update file. Explain any
+  increased charge, differences between model discounts, client-version
+  limitations, and scheduled price changes (with an explicit time zone). Do not
+  call a mixed-model change “half price” or imply an App Store release occurred.
+- Check both the app page and `/updates`, while preserving every app-release
+  row. The current website has one language (`en-US`); app language support is
+  not a website locale list. If website locales are added, cover each of them.
+- Run `npm test`, `./scripts/sync-assets.sh`, and `npm run docs:build`; review
+  the rendered pages. Never publish endpoints, infrastructure identifiers,
+  private deployment evidence, sales, credentials, or customer data.
+- Link the site PR from the service release checklist/PR. Wait for owner approval
+  before merging/publishing either PR. Tagging, creating a release, dispatching
+  a workflow, or pushing `master` needs its own explicit approval; adding notes
+  does not authorize any of these actions.

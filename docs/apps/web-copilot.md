@@ -18,6 +18,7 @@ head:
 <script setup>
 import Changelog from '../components/Changelog.vue';
 import changelog from '../data/changelogs/web-copilot.json';
+import serverUpdates from '../data/server-updates/web-copilot.json';
 </script>
 
 <div class="app-hero">
@@ -48,4 +49,4 @@ import changelog from '../data/changelogs/web-copilot.json';
 
 ## What's New
 
-<Changelog :items="changelog" />
+<Changelog :items="changelog" :server-items="serverUpdates" />

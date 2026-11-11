@@ -18,6 +18,7 @@ head:
 <script setup>
 import Changelog from '../components/Changelog.vue';
 import changelog from '../data/changelogs/hello-hero.json';
+import serverUpdates from '../data/server-updates/hello-hero.json';
 </script>
 
 <div class="app-hero">
@@ -47,4 +48,4 @@ import changelog from '../data/changelogs/hello-hero.json';
 
 ## What's New
 
-<Changelog :items="changelog" />
+<Changelog :items="changelog" :server-items="serverUpdates" />

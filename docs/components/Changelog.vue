@@ -1,22 +1,24 @@
 <script setup lang="ts">
-const props = defineProps<{ items: { version: string; date: string; platforms: string[]; notes: string }[]; limit?: number }>();
+import { changelogEntries, entryLabel, entryMeta, entryNotes } from './changelog.js';
+const props = defineProps<{ items: { version: string; date: string; platforms: string[]; notes: string }[]; serverItems?: { date: string; notes: string; version?: string }[]; limit?: number }>();
+const entries = changelogEntries(props.items, props.serverItems);
 const max = props.limit ?? 10;
-const recent = props.items.slice(0, max);
-const older = props.items.slice(max);
-const text = (e: any) => e.notes || (e.version === '1.0' ? 'Initial release.' : '');
+const recent = entries.slice(0, max);
+const older = entries.slice(max);
+
 </script>
 
 <template>
   <div class="changelog">
-    <div v-for="e in recent" :key="e.version" class="cl-entry">
-      <div class="cl-head"><strong>{{ e.version }}</strong><span>{{ e.date }} · {{ e.platforms.join(', ') }}</span></div>
-      <div v-if="text(e)" class="cl-notes">{{ text(e) }}</div>
+    <div v-for="e in recent" :key="e.key" class="cl-entry">
+      <div class="cl-head"><strong>{{ entryLabel(e) }}</strong><span>{{ entryMeta(e) }}</span></div>
+      <div v-if="entryNotes(e)" class="cl-notes">{{ entryNotes(e) }}</div>
     </div>
     <details v-if="older.length" class="cl-older">
-      <summary>Older versions ({{ older.length }})</summary>
-      <div v-for="e in older" :key="e.version" class="cl-entry">
-        <div class="cl-head"><strong>{{ e.version }}</strong><span>{{ e.date }} · {{ e.platforms.join(', ') }}</span></div>
-        <div v-if="text(e)" class="cl-notes">{{ text(e) }}</div>
+      <summary>{{ props.serverItems?.length ? 'Older updates' : 'Older versions' }} ({{ older.length }})</summary>
+      <div v-for="e in older" :key="e.key" class="cl-entry">
+        <div class="cl-head"><strong>{{ entryLabel(e) }}</strong><span>{{ entryMeta(e) }}</span></div>
+        <div v-if="entryNotes(e)" class="cl-notes">{{ entryNotes(e) }}</div>
       </div>
     </details>
   </div>
