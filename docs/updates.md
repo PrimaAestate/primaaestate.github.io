@@ -1,6 +1,6 @@
 ---
 title: Updates
-description: Release notes for all Prima Aestate apps, newest first.
+description: App releases and server-side updates for Prima Aestate apps, newest first.
 aside: false
 ---
 
@@ -10,6 +10,6 @@ import Updates from './components/Updates.vue';
 
 # Updates
 
-Latest releases across all Prima Aestate apps.
+Latest app releases and server-side updates across Prima Aestate apps. Server updates are listed separately from App Store version numbers.
 
 <Updates />
