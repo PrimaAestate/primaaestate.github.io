@@ -92,7 +92,7 @@ workflow for a service deployment; it writes directly to `master`.
 
 Each server row has an actual rollout `date` (`YYYY-MM-DD`) and plain-text
 `notes`. An optional `version` may identify a **verified server tag for that
-rollout** in future; it is never an App Store version. Until a matching server
+rollout**; it is never an App Store version. Until a matching server
 tag exists, omit it: the UI says **Server update** and shows the date. A stale
 latest tag or a package.json version is not evidence of a deployment version.
 

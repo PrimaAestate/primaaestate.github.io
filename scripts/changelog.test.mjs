@@ -41,13 +41,14 @@ test('mixed history sorts newest first while retaining same-day stable app order
   assert.equal(newestFirst(server, server), 0);
   assert.equal(newestFirst({date: null}, server) > 0, true);
 });
-test('HH/WC each have exactly the two approved service dates with unversioned identities', () => {
+test('HH/WC retain approved dates with a verified tag only for the Carbon rollout', () => {
   for (const slug of ['hello-hero', 'web-copilot']) {
     const apps = readJSON(`docs/data/changelogs/${slug}.json`);
     const services = readJSON(`docs/data/server-updates/${slug}.json`);
     assert.deepEqual(services.map(r => r.date), ['2026-11-11', '2026-11-10']);
     for (const row of services) {
-      assert.deepEqual(Object.keys(row).sort(), ['date', 'notes']);
+      assert.deepEqual(Object.keys(row).sort(), row.date === '2026-11-11' ? ['date', 'notes', 'version'] : ['date', 'notes']);
+      assert.equal(row.version, row.date === '2026-11-11' ? 'v0.1.3' : undefined);
       assert.match(row.notes, /In-app purchase prices are unchanged/);
       assert.doesNotMatch(row.notes, /https?:|tencentscf|SCF|digest|live\d+|[0-9a-f]{40}|sales|requestId|installId/i);
     }
