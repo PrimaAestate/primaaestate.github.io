@@ -8,6 +8,23 @@ CSS-drawn phone on the right (round camera dot, generic status bar). No Apple de
 
 This folder is outside `docs/`, so it is not part of the VitePress build.
 
+## Default site card
+
+The site-wide default share card (`docs/public/og-default.jpg`) is used by pages that do not set their own
+`og:image` (home, `/updates`, `/Feedback`, `/PrivacyPolicy`). It is a centered typographic card on a near-black
+field: the brand name in [Cormorant Garamond](https://github.com/CatharsisFonts/Cormorant) Light, the tagline
+and domain in [Inter](https://github.com/rsms/inter) Light. No app icons and no logo. Both fonts are SIL OFL 1.1
+and are bundled under `default/fonts/` (see `default/fonts/SOURCE.txt` and each family's `OFL.txt`).
+
+```sh
+python3 scripts/og-card/default/gen.py                 # writes docs/public/og-default.jpg
+python3 scripts/og-card/default/gen.py --out /tmp/og-default.png
+```
+
+The JPEG is gitignored on `master`. After regenerating it, publish with `./scripts/publish-assets.sh`.
+The file path stays `/og-default.jpg`; when the image itself changes, bump the `?v=` query on
+`og:image` / `twitter:image` in `docs/.vitepress/config.ts` so CDNs and link crawlers refetch it.
+
 ## Run
 
 Requirements:

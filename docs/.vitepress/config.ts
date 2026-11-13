@@ -1,6 +1,8 @@
 import { defineConfig } from "vitepress";
 
 const SITE = 'https://www.primaaestate.cloud';
+// Bump this when replacing docs/public/og-default.jpg so crawlers refetch the card.
+const OG_DEFAULT = `${SITE}/og-default.jpg?v=20261113`;
 // Google Analytics 4 measurement ID. Set to '' to disable.
 const GA_ID = 'G-S66MPLRFJZ';
 
@@ -28,13 +30,13 @@ export default defineConfig({
       ['meta', { property: 'og:title', content: title }],
       ['meta', { property: 'og:description', content: desc }],
       ['meta', { property: 'og:url', content: `${SITE}/${path}` }],
-      ['meta', { property: 'og:image', content: `${SITE}/og-default.jpg` }],
+      ['meta', { property: 'og:image', content: OG_DEFAULT }],
       ['meta', { property: 'og:image:width', content: '1200' }],
       ['meta', { property: 'og:image:height', content: '630' }],
       ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
       ['meta', { name: 'twitter:title', content: title }],
       ['meta', { name: 'twitter:description', content: desc }],
-      ['meta', { name: 'twitter:image', content: `${SITE}/og-default.jpg` }],
+      ['meta', { name: 'twitter:image', content: OG_DEFAULT }],
     ];
   },
   themeConfig: {
