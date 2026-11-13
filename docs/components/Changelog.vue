@@ -1,11 +1,22 @@
 <script setup lang="ts">
-import { changelogEntries, entryLabel, entryMeta, entryNotes } from './changelog.js';
-const props = defineProps<{ items: { version: string; date: string; platforms: string[]; notes: string }[]; serverItems?: { date: string; notes: string; version?: string }[]; limit?: number }>();
-const entries = changelogEntries(props.items, props.serverItems);
-const max = props.limit ?? 10;
-const recent = entries.slice(0, max);
-const older = entries.slice(max);
-
+import { computed } from 'vue';
+import { changelogEntries, entryLabel, entryMeta, entryNotes, serverUpdatesForApp } from './changelog.js';
+const props = defineProps<{
+  items: { version: string; date: string; platforms: string[]; notes: string }[];
+  serverItems?: { date: string; notes: string; version?: string }[];
+  sharedItems?: { date: string; notes: string; version?: string; apps?: string[]; extras?: Record<string, string> }[];
+  app?: string;
+  limit?: number;
+}>();
+const resolvedServerItems = computed(() =>
+  props.sharedItems && props.app
+    ? serverUpdatesForApp(props.sharedItems, props.app)
+    : (props.serverItems || []),
+);
+const entries = computed(() => changelogEntries(props.items, resolvedServerItems.value));
+const max = computed(() => props.limit ?? 10);
+const recent = computed(() => entries.value.slice(0, max.value));
+const older = computed(() => entries.value.slice(max.value));
 </script>
 
 <template>
@@ -15,7 +26,7 @@ const older = entries.slice(max);
       <div v-if="entryNotes(e)" class="cl-notes">{{ entryNotes(e) }}</div>
     </div>
     <details v-if="older.length" class="cl-older">
-      <summary>{{ props.serverItems?.length ? 'Older updates' : 'Older versions' }} ({{ older.length }})</summary>
+      <summary>{{ resolvedServerItems.length ? 'Older updates' : 'Older versions' }} ({{ older.length }})</summary>
       <div v-for="e in older" :key="e.key" class="cl-entry">
         <div class="cl-head"><strong>{{ entryLabel(e) }}</strong><span>{{ entryMeta(e) }}</span></div>
         <div v-if="entryNotes(e)" class="cl-notes">{{ entryNotes(e) }}</div>

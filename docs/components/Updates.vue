@@ -1,39 +1,36 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { changelogEntries, newestFirst, entryLabel, entryMeta, entryNotes } from './changelog.js';
+import sharedServerUpdates from '../data/server-updates/shared.json';
+import { updatesFeed, APP_NAMES, entryLabel, entryMeta, entryNotes, entryNotesWithExtras } from './changelog.js';
 
-const NAMES: Record<string, string> = {
-  aestate: 'Aestate', nomedia: 'NoMedia', 'web-copilot': 'Web Copilot', 'hello-hero': 'Hello, Hero',
-  'console-mini': 'Console Mini', 'url-editor-portable': 'URL Editor Portable', 'json-tree': 'JSON Tree',
-  'cashier-desk': 'Cashier Desk',
-};
 const files = import.meta.glob('../data/changelogs/*.json', { eager: true, import: 'default' }) as Record<string, any[]>;
-const serverFiles = import.meta.glob('../data/server-updates/*.json', { eager: true, import: 'default' }) as Record<string, any[]>;
-const all = Object.entries(files)
-  .flatMap(([p, rows]) => {
-    const slug = p.split('/').pop()!.replace('.json', '');
-    const servers = serverFiles[p.replace('/changelogs/', '/server-updates/')] || [];
-    return changelogEntries(rows, servers).map((r) => ({ ...r, slug, name: NAMES[slug] || slug }));
-  })
-  .sort(newestFirst);
+const changelogFiles = Object.fromEntries(
+  Object.entries(files).map(([p, rows]) => [p.split('/').pop()!.replace('.json', ''), rows]),
+);
+const all = updatesFeed(changelogFiles, sharedServerUpdates as any[]);
 const shown = ref(30);
 const items = computed(() => all.slice(0, shown.value));
-
+const nameOf = (slug: string) => APP_NAMES[slug] || slug;
 </script>
 
 <template>
   <div class="updates">
-    <div v-for="e in items" :key="e.slug + e.key" class="up-entry">
-      <a :href="`/apps/${e.slug}`" class="up-app">
-        <img :src="`/img/apps/${e.slug}/icon.png`" :alt="e.name" />
-      </a>
+    <div v-for="e in items" :key="(e.slug || 'server') + e.key" class="up-entry">
+      <div class="up-apps">
+        <a v-for="slug in e.apps" :key="slug" :href="`/apps/${slug}`" class="up-app">
+          <img :src="`/img/apps/${slug}/icon.png`" :alt="nameOf(slug)" />
+        </a>
+      </div>
       <div class="up-body">
         <div class="up-head">
-          <a :href="`/apps/${e.slug}`"><strong>{{ e.name }}</strong></a>
+          <template v-if="e.kind === 'server'">
+            <a v-for="slug in e.apps" :key="slug" :href="`/apps/${slug}`"><strong>{{ nameOf(slug) }}</strong></a>
+          </template>
+          <a v-else :href="`/apps/${e.slug}`"><strong>{{ e.name }}</strong></a>
           <span class="up-ver">{{ entryLabel(e) }}</span>
           <span class="up-meta">{{ entryMeta(e) }}</span>
         </div>
-        <div v-if="entryNotes(e)" class="up-notes">{{ entryNotes(e) }}</div>
+        <div v-if="e.kind === 'server' ? entryNotesWithExtras(e) : entryNotes(e)" class="up-notes">{{ e.kind === 'server' ? entryNotesWithExtras(e) : entryNotes(e) }}</div>
       </div>
     </div>
     <button v-if="shown < all.length" class="up-more" @click="shown += 30">
@@ -44,7 +41,8 @@ const items = computed(() => all.slice(0, shown.value));
 
 <style scoped>
 .up-entry { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--vp-c-divider); }
-.up-app img { width: 48px; height: 48px; border-radius: 11px; }
+.up-apps { display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto; width: 48px; }
+.up-app img { width: 48px; height: 48px; border-radius: 11px; display: block; }
 .up-body { flex: 1; min-width: 0; }
 .up-head { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: baseline; }
 .up-head a { text-decoration: none; color: inherit; }

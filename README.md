@@ -84,27 +84,34 @@ python3 scripts/fetch-changelogs.py nomedia   # one app
 ## Server-side updates (reviewed separately from app releases)
 
 The existing app-page changelog and `/updates` also render
-`docs/data/server-updates/<slug>.json`. Keep service notes separate from
+`docs/data/server-updates/shared.json`. Keep service notes separate from
 `docs/data/changelogs/`: App Store imports and `app-release` dispatches own the
 app files and must not overwrite service history. There is no server-release
 dispatch or automatic backend-tag integration. Do not invoke the app-release
 workflow for a service deployment; it writes directly to `master`.
 
-Each server row has an actual rollout `date` (`YYYY-MM-DD`) and plain-text
-`notes`. An optional `version` may identify a **verified server tag for that
-rollout**; it is never an App Store version. Until a matching server
-tag exists, omit it: the UI says **Server update** and shows the date. A stale
-latest tag or a package.json version is not evidence of a deployment version.
+Each shared row has an actual rollout `date` (`YYYY-MM-DD`), plain-text `notes` that use the same section headings as app What's New (`Features`, `Bug Fixes`, `Improvements`, `Performance Improvements`),
+and an `apps` list of slugs that should show the note (for example
+`hello-hero` and `web-copilot`). An optional `version` may identify a
+**verified server tag for that rollout**; it is never an App Store version.
+Until a matching server tag exists, omit it: the UI says **Server update**
+and shows the date. A stale latest tag or a package.json version is not
+evidence of a deployment version. Optional `extras.<slug>` text is appended
+for that app only, inserted before the last bullet of `notes` so a shared
+closing line stays last. `/updates` shows one row per shared entry and lists
+every affected app; each app page shows only rows that include that slug,
+with extras already merged.
 
 ### Customer-visible service release checklist
 
 - After a verified service rollout, explicitly decide whether model availability,
   token deductions, voice pricing, or other user-visible behavior needs a site
   update. Document “no customer-visible change” when no entry is needed.
-- Prepare a website PR for each affected app's server-update file. Explain any
-  increased charge, differences between model discounts, client-version
-  limitations, and scheduled price changes (with an explicit time zone). Do not
-  call a mixed-model change “half price” or imply an App Store release occurred.
+- Prepare a website PR that updates the shared server-update file (and extras
+  when only some apps are affected). Explain any increased charge, differences
+  between model discounts, client-version limitations, and scheduled price
+  changes (with an explicit time zone). Do not call a mixed-model change “half
+  price” or imply an App Store release occurred.
 - Check both the app page and `/updates`, while preserving every app-release
   row. The current website has one language (`en-US`); app language support is
   not a website locale list. If website locales are added, cover each of them.

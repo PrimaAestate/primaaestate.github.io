@@ -18,7 +18,7 @@ head:
 <script setup>
 import Changelog from '../components/Changelog.vue';
 import changelog from '../data/changelogs/hello-hero.json';
-import serverUpdates from '../data/server-updates/hello-hero.json';
+import sharedServerUpdates from '../data/server-updates/shared.json';
 </script>
 
 <div class="app-hero">
@@ -48,4 +48,4 @@ import serverUpdates from '../data/server-updates/hello-hero.json';
 
 ## What's New
 
-<Changelog :items="changelog" :server-items="serverUpdates" />
+<Changelog :items="changelog" :shared-items="sharedServerUpdates" app="hello-hero" />
