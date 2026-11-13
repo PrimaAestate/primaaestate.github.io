@@ -1,0 +1,10 @@
+Fonts bundled for the default site share card.
+
+Downloaded 2026-11-13 from the official google/fonts repository
+(https://github.com/google/fonts), SIL Open Font License 1.1.
+
+  ofl/cormorantgaramond/CormorantGaramond[wght].ttf  →  CormorantGaramond-Variable.ttf
+  ofl/inter/Inter[opsz,wght].ttf                     →  Inter-Variable.ttf
+
+Variable fonts were renamed on disk; the files are otherwise unmodified.
+Each family directory includes the OFL.txt shipped with that font.
