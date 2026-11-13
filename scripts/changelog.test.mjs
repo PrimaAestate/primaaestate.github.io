@@ -13,11 +13,11 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const readJSON = p => JSON.parse(fs.readFileSync(path.join(root, p), 'utf8'));
 const app = {version: '1.2.3', date: '2026-11-09', platforms: ['iOS', 'macOS'], notes: 'App release'};
 const server = {date: '2026-11-11', notes: 'Service rollout'};
-const CARBON_NOTES = "- Gemini 4 Carbon is now available alongside Gemini 4 Argon. Gemini 3.5 Flash-Lite remains the default model.\n- In app versions that support the server model list, Carbon appears after that list refreshes. Older versions may not show it.\n- Carbon uses the same component-based token pricing as Argon: introductory reference 11× until December 1, 2026 at 08:00 China Standard Time (UTC+8), then standard 23×. Actual deductions distinguish input, output/thinking, and cached tokens rather than applying one flat multiplier.\n- In-app purchase prices are unchanged.";
-const PRICING_COMMON = "- Text-token deductions are lower: server reference multipliers change from 5× to 3× for Gemini 3.5 Flash-Lite, 9× to 5× for Gemini 3.8 Flash, and 23× to 11× for Gemini 4 Argon during its introductory period (standard: 46× to 23×). The reductions differ by model, not a uniform 50% discount.\n- Actual deductions still price input, output (including thinking), and cached tokens separately; the reference multiplier is not one flat rate for every token.\n- In-app purchase prices are unchanged.";
+const CARBON_NOTES = "Features\n\n- Gemini 4 Carbon is now available alongside Gemini 4 Argon. Gemini 3.5 Flash-Lite remains the default model.\n- In app versions that support the server model list, Carbon appears after that list refreshes. Older versions may not show it.\n\nImprovements\n\n- Carbon uses the same component-based token pricing as Argon: introductory reference 11× until December 1, 2026 at 08:00 China Standard Time (UTC+8), then standard 23×. Actual deductions distinguish input, output/thinking, and cached tokens rather than applying one flat multiplier.\n- In-app purchase prices are unchanged.";
+const PRICING_COMMON = "Improvements\n\n- Text-token deductions are lower: server reference multipliers change from 5× to 3× for Gemini 3.5 Flash-Lite, 9× to 5× for Gemini 3.8 Flash, and 23× to 11× for Gemini 4 Argon during its introductory period (standard: 46× to 23×). The reductions differ by model, not a uniform 50% discount.\n- Actual deductions still price input, output (including thinking), and cached tokens separately; the reference multiplier is not one flat rate for every token.\n- In-app purchase prices are unchanged.";
 const HH_VOICE = "- Voice-reply pricing has increased. Text input and generated audio are now charged separately, replacing the previous total-token rule.";
-const HH_PRICING = "- Text-token deductions are lower: server reference multipliers change from 5× to 3× for Gemini 3.5 Flash-Lite, 9× to 5× for Gemini 3.8 Flash, and 23× to 11× for Gemini 4 Argon during its introductory period (standard: 46× to 23×). The reductions differ by model, not a uniform 50% discount.\n- Actual deductions still price input, output (including thinking), and cached tokens separately; the reference multiplier is not one flat rate for every token.\n- Voice-reply pricing has increased. Text input and generated audio are now charged separately, replacing the previous total-token rule.\n- In-app purchase prices are unchanged.";
-const HYDROGEN_NOTES = "- Gemini 4 Hydrogen is now available as an optional chat model, with a server reference multiplier of 7×. Gemini 3.5 Flash-Lite remains the default model.\n- Gemini 4 Argon is no longer listed. If an older version still requests Argon, the service uses Flash-Lite instead.\n- Default thinking levels now follow each model's official defaults. Hydrogen defaults to high and also allows an extra-high option.\n- Carbon's introductory and standard pricing is unchanged. In-app purchase prices are unchanged.";
+const HH_PRICING = "Improvements\n\n- Text-token deductions are lower: server reference multipliers change from 5× to 3× for Gemini 3.5 Flash-Lite, 9× to 5× for Gemini 3.8 Flash, and 23× to 11× for Gemini 4 Argon during its introductory period (standard: 46× to 23×). The reductions differ by model, not a uniform 50% discount.\n- Actual deductions still price input, output (including thinking), and cached tokens separately; the reference multiplier is not one flat rate for every token.\n- Voice-reply pricing has increased. Text input and generated audio are now charged separately, replacing the previous total-token rule.\n- In-app purchase prices are unchanged.";
+const HYDROGEN_NOTES = "Features\n\n- Gemini 4 Hydrogen is now available as an optional chat model, with a server reference multiplier of 7×. Gemini 3.5 Flash-Lite remains the default model.\n- Gemini 4 Argon is no longer listed. If an older version still requests Argon, the service uses Flash-Lite instead.\n- Default thinking levels now follow each model's official defaults. Hydrogen defaults to high and also allows an extra-high option.\n\nImprovements\n\n- Carbon's introductory and standard pricing is unchanged. In-app purchase prices are unchanged.";
 
 test('existing app-only history retains its input order and presentation', () => {
   const initial = {version: '1.0', date: '2020-01-01', platforms: ['iOS'], notes: ''};
@@ -99,7 +99,9 @@ test('Hydrogen notice is a short 7× / Argon / official-thinking / unchanged-pri
     const row = serverUpdatesForApp(shared, slug).find(r => r.date === '2026-11-13');
     assert.equal(row.version, 'v0.1.4');
     assert.equal(row.notes, HYDROGEN_NOTES);
-    assert.equal(row.notes.split('\n- ').length - 1 + (row.notes.startsWith('- ') ? 1 : 0), 4);
+    assert.match(row.notes, /^Features\n\n-/);
+    assert.match(row.notes, /\n\nImprovements\n\n-/);
+    assert.equal(row.notes.split('\n').filter(l => l.startsWith('- ')).length, 4);
     assert.doesNotMatch(row.notes, /7\/18|profit|margin|SCF|hello-hero-prod|after that list refreshes|component-based|cached tokens/i);
   }
 });
@@ -116,8 +118,12 @@ test('/updates lists each shared server row once and keeps per-app extras', () =
     assert.deepEqual(row.apps, ['hello-hero', 'web-copilot']);
     assert.equal(feed.filter(r => r.key === row.key).length, 1);
   }
-  assert.match(entryNotesWithExtras(servers[2]), /Voice-reply pricing has increased/);
-  assert.match(entryNotesWithExtras(servers[2]), /Hello, Hero/);
+  const priced = entryNotesWithExtras(servers[2]);
+  assert.match(priced, /Voice-reply pricing has increased/);
+  assert.match(priced, /Hello, Hero/);
+  assert.match(priced, /^Improvements\n/m);
+  assert.ok(priced.indexOf('Improvements') < priced.indexOf('Voice-reply'));
+  assert.ok(priced.indexOf('Voice-reply') < priced.indexOf('In-app purchase prices are unchanged'));
   assert.doesNotMatch(entryNotesWithExtras(servers[0]), /Hello, Hero\n-/);
   assert.equal(APP_NAMES['hello-hero'], 'Hello, Hero');
 });

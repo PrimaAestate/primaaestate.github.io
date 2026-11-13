@@ -97,6 +97,15 @@ export function entryNotesWithExtras(entry) {
     if (!extras[slug]) continue;
     blocks.push(`${APP_NAMES[slug] || slug}\n${extras[slug]}`);
   }
-  if (!blocks.length) return notes;
-  return notes ? `${notes}\n${blocks.join('\n')}` : blocks.join('\n');
+  const extraText = blocks.join('\n');
+  if (!extraText) return notes;
+  if (!notes) return extraText;
+  // Keep labeled extras in the same section, before the last shared bullet.
+  const lines = notes.split('\n');
+  let last = -1;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].startsWith('- ')) last = i;
+  }
+  if (last < 0) return `${notes}\n${extraText}`;
+  return [...lines.slice(0, last), extraText, ...lines.slice(last)].join('\n');
 }

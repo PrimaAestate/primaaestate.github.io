@@ -90,7 +90,7 @@ app files and must not overwrite service history. There is no server-release
 dispatch or automatic backend-tag integration. Do not invoke the app-release
 workflow for a service deployment; it writes directly to `master`.
 
-Each shared row has an actual rollout `date` (`YYYY-MM-DD`), plain-text `notes`,
+Each shared row has an actual rollout `date` (`YYYY-MM-DD`), plain-text `notes` that use the same section headings as app What's New (`Features`, `Bug Fixes`, `Improvements`, `Performance Improvements`),
 and an `apps` list of slugs that should show the note (for example
 `hello-hero` and `web-copilot`). An optional `version` may identify a
 **verified server tag for that rollout**; it is never an App Store version.
