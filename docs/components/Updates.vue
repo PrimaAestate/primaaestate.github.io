@@ -41,8 +41,7 @@ const nameOf = (slug: string) => APP_NAMES[slug] || slug;
 
 <style scoped>
 .up-entry { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--vp-c-divider); }
-.up-apps { display: flex; flex-wrap: wrap; gap: 6px; flex: 0 0 auto; width: 48px; }
-.up-apps:has(> :nth-child(2)) { width: auto; max-width: 102px; }
+.up-apps { display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto; width: 48px; }
 .up-app img { width: 48px; height: 48px; border-radius: 11px; display: block; }
 .up-body { flex: 1; min-width: 0; }
 .up-head { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: baseline; }
