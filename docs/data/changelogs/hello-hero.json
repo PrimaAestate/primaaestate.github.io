@@ -1,5 +1,13 @@
 [
   {
+    "version": "1.4.0",
+    "date": "2026-11-06",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Bug Fixes\n\n- Settings cards now use the system style.\n\nFeatures\n\n- See replies as they arrive and stop generation."
+  },
+  {
     "version": "1.3.0",
     "date": "2026-11-01",
     "platforms": [
