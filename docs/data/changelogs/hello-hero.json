@@ -1,5 +1,13 @@
 [
   {
+    "version": "1.5.0",
+    "date": "2026-11-16",
+    "platforms": [
+      "iOS"
+    ],
+    "notes": "Bug Fixes\n\n- Fix speaker labels, empty bubbles, and message counts during live replies.\n\nFeatures\n\n- Smoother typewriter pacing with dramatic pauses and bubble growth.\n- Choose model thinking effort in Settings."
+  },
+  {
     "version": "1.4.0",
     "date": "2026-11-06",
     "platforms": [
