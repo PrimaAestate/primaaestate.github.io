@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.2.7",
+    "date": "2026-11-16",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- Native translucent Safari popup surface with refined controls and shared palette\n- Improved popup typography scaling, spacing, and touch targets\n\nBug Fixes\n\n- Consistent popup layout and platform hint visibility across devices"
+  },
+  {
     "version": "1.2.6",
     "date": "2026-10-27",
     "platforms": [
