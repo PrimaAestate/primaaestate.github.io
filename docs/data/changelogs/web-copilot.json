@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.3.3",
+    "date": "2026-11-16",
+    "platforms": [
+      "iOS",
+      "macOS"
+    ],
+    "notes": "Features\n\n- Choose the model and thinking effort right in the chat composer, synced with the app settings and defaulting to each model's recommended level\n- Inspect and interact with elements inside same-origin iframes, accessible isolated frames, and open Shadow DOM\n\nBug Fixes\n\n- Refreshed in-page and popup chat appearance with a translucent input box, inline send button, rounded cards, and lighter message tints\n- Improved chat input resizing, session menu spacing, and model selector labels and colors in light and dark mode\n- Avoided duplicate settings writes and repeated haptic feedback when switching model or effort preferences"
+  },
+  {
     "version": "1.3.2",
     "date": "2026-11-06",
     "platforms": [
