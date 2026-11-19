@@ -1,7 +1,7 @@
 name: App release changelog
 on:
   repository_dispatch:
-    types: [app-release]
+    types: [app-release, server-release]
 concurrency:
   group: site-deploy
   cancel-in-progress: false
@@ -16,17 +16,33 @@ jobs:
           ref: master
       - name: Merge changelog entry
         env:
+          EVENT_ACTION: ${{ github.event.action }}
           PAYLOAD: ${{ toJson(github.event.client_payload) }}
         run: |
           printf '%s' "$PAYLOAD" > /tmp/payload.json
-          python3 scripts/merge-changelog.py /tmp/payload.json
+          if [ "$EVENT_ACTION" = "server-release" ]; then
+            python3 scripts/merge-server-update.py /tmp/payload.json
+            node --test scripts/changelog.test.mjs
+          else
+            python3 scripts/merge-changelog.py /tmp/payload.json
+          fi
       - name: Commit
+        env:
+          EVENT_ACTION: ${{ github.event.action }}
+          SLUG: ${{ github.event.client_payload.slug }}
+          VERSION: ${{ github.event.client_payload.version }}
+          DATE: ${{ github.event.client_payload.date }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/changelogs
+          git add docs/data/changelogs docs/data/server-updates/shared.json
           if git diff --cached --quiet; then echo "no change"; exit 0; fi
-          git commit -m "chore(changelog): ${{ github.event.client_payload.slug }} ${{ github.event.client_payload.version }}"
+          if [ "$EVENT_ACTION" = "server-release" ]; then
+            LABEL="${VERSION:-$DATE}"
+            git commit -m "chore(changelog): server-update ${LABEL}"
+          else
+            git commit -m "chore(changelog): ${SLUG} ${VERSION}"
+          fi
           git push origin HEAD:master
       # Pushes made with GITHUB_TOKEN don't trigger main.yml, so build and deploy here.
       - name: Sync site images from assets branch

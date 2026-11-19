@@ -85,14 +85,21 @@ ASC_KEY_ID=... ASC_ISSUER_ID=... ASC_PRIVATE_KEY="$(cat AuthKey_XXXX.p8)" python
 python3 scripts/fetch-changelogs.py nomedia   # one app
 ```
 
-## Server-side updates (reviewed separately from app releases)
+## Server-side updates
 
 The existing app-page changelog and `/updates` also render
 `docs/data/server-updates/shared.json`. Keep service notes separate from
 `docs/data/changelogs/`: App Store imports and `app-release` dispatches own the
-app files and must not overwrite service history. There is no server-release
-dispatch or automatic backend-tag integration. Do not invoke the app-release
-workflow for a service deployment; it writes directly to `master`.
+app files and must not overwrite service history.
+
+**Automatic (on service release):** `hello-hero-service` has `.github/workflows/notify-site.yml`. When a `v*` tag is pushed (or triggered via `workflow_dispatch`) and `release-notes.json` matches that release, it sends a `repository_dispatch` (`server-release`) to this repo with `{version, date, apps, notes, extras?}`. `.github/workflows/app-release.yml` merges it via `scripts/merge-server-update.py` (idempotent upsert by `version` or `date`, internal-term filter), runs `npm test`, commits `docs/data/server-updates/shared.json` to `master`, then builds and deploys.
+
+Test locally:
+
+```sh
+printf '%s' '{"version":"v0.1.5","date":"2026-11-19","apps":["hello-hero","web-copilot"],"notes":"Features\n\n- Example"}' > /tmp/s.json
+python3 scripts/merge-server-update.py /tmp/s.json && git diff docs/data/server-updates/shared.json
+```
 
 Each shared row has an actual rollout `date` (`YYYY-MM-DD`), plain-text `notes` that use the same section headings as app What's New (`Features`, `Bug Fixes`, `Improvements`, `Performance Improvements`),
 and an `apps` list of slugs that should show the note (for example
