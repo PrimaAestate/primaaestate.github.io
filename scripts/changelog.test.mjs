@@ -140,50 +140,51 @@ test('server release upserts update shared.json idempotently and reject internal
   const appPath = path.join(dir, 'docs/data/changelogs/hello-hero.json');
   const appBefore = fs.readFileSync(appPath);
   const servicePath = path.join(dir, 'docs/data/server-updates/shared.json');
+  const initialCount = JSON.parse(fs.readFileSync(servicePath, 'utf8')).length;
   const payload = path.join(dir, 'server-fixture.json');
 
   fs.writeFileSync(payload, JSON.stringify({
-    version: '0.1.5',
-    date: '2026-11-19',
+    version: '99.0.0',
+    date: '2099-01-01',
     apps: ['hello-hero', 'web-copilot'],
-    notes: 'Features\n\n- Added Gemini 4 Neon.\n- In-app purchase prices are unchanged.',
+    notes: 'Features\n\n- Synthetic server fixture.\n- In-app purchase prices are unchanged.',
     extras: {'hello-hero': '- Voice-reply reference rates updated.'}
   }));
   let r = spawnSync('python3', [path.join(dir, 'scripts/merge-server-update.py'), payload], {encoding:'utf8'});
   assert.equal(r.status, 0, r.stderr);
-  assert.match(r.stdout, /server-update v0\.1\.5 \(2026-11-19\): added/);
+  assert.match(r.stdout, /server-update v99\.0\.0 \(2099-01-01\): added/);
 
   let rows = JSON.parse(fs.readFileSync(servicePath, 'utf8'));
-  assert.equal(rows.length, 4);
-  assert.equal(rows[0].version, 'v0.1.5');
-  assert.equal(rows[0].date, '2026-11-19');
+  assert.equal(rows.length, initialCount + 1);
+  assert.equal(rows[0].version, 'v99.0.0');
+  assert.equal(rows[0].date, '2099-01-01');
   assert.deepEqual(rows[0].apps, ['hello-hero', 'web-copilot']);
   assert.equal(rows[0].extras['hello-hero'], '- Voice-reply reference rates updated.');
 
   // Upserting the same version updates in place without adding a duplicate row.
   fs.writeFileSync(payload, JSON.stringify({
-    version: 'v0.1.5',
-    date: '2026-11-19',
+    version: 'v99.0.0',
+    date: '2099-01-01',
     apps: ['hello-hero', 'web-copilot'],
-    notes: 'Features\n\n- Added Gemini 4 Neon (11×).\n- In-app purchase prices are unchanged.'
+    notes: 'Features\n\n- Synthetic server fixture (11×).\n- In-app purchase prices are unchanged.'
   }));
   r = spawnSync('python3', [path.join(dir, 'scripts/merge-server-update.py'), payload], {encoding:'utf8'});
   assert.equal(r.status, 0, r.stderr);
-  assert.match(r.stdout, /server-update v0\.1\.5 \(2026-11-19\): updated/);
+  assert.match(r.stdout, /server-update v99\.0\.0 \(2099-01-01\): updated/);
   rows = JSON.parse(fs.readFileSync(servicePath, 'utf8'));
-  assert.equal(rows.length, 4);
+  assert.equal(rows.length, initialCount + 1);
   assert.equal(rows[0].extras, undefined);
   assert.match(rows[0].notes, /11×/);
 
   // Forbidden internal terms are rejected before modifying shared.json.
   fs.writeFileSync(payload, JSON.stringify({
-    version: 'v0.1.6',
-    date: '2026-11-20',
+    version: 'v99.0.1',
+    date: '2099-01-02',
     notes: 'Features\n\n- Deployed to SCF live2'
   }));
   r = spawnSync('python3', [path.join(dir, 'scripts/merge-server-update.py'), payload], {encoding:'utf8'});
   assert.notEqual(r.status, 0);
-  assert.equal(JSON.parse(fs.readFileSync(servicePath, 'utf8')).length, 4);
+  assert.equal(JSON.parse(fs.readFileSync(servicePath, 'utf8')).length, initialCount + 1);
   assert.deepEqual(fs.readFileSync(appPath), appBefore);
 });
 test('app release upserts preserve separate server history without any dispatch or network call', t => {
