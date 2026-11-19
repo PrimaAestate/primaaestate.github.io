@@ -56,20 +56,24 @@ test('shared extras are inserted before the last shared bullet', () => {
 });
 test('HH/WC app pages keep pre-migration Carbon and 11-10 wording after the shared-file move', () => {
   const shared = readJSON('docs/data/server-updates/shared.json');
-  assert.deepEqual(shared.map(r => r.date), ['2026-11-13', '2026-11-11', '2026-11-10']);
+  assert.deepEqual(shared.map(r => r.date), [...shared].sort(newestFirst).map(r => r.date));
+  assert.deepEqual(shared.slice(-3).map(r => r.date), ['2026-11-13', '2026-11-11', '2026-11-10']);
   for (const slug of ['hello-hero', 'web-copilot']) {
     const rows = serverUpdatesForApp(shared, slug);
-    assert.deepEqual(rows.map(r => r.date), ['2026-11-13', '2026-11-11', '2026-11-10']);
-    assert.equal(rows[0].version, 'v0.1.4');
-    assert.equal(rows[1].version, 'v0.1.3');
-    assert.equal(rows[2].version, undefined);
-    assert.equal(rows[1].notes, CARBON_NOTES);
-    assert.equal(rows[2].notes, slug === 'hello-hero' ? HH_PRICING : PRICING_COMMON);
-    assert.match(rows[2].notes, /In-app purchase prices are unchanged/);
+    assert.deepEqual(rows.slice(-3).map(r => r.date), ['2026-11-13', '2026-11-11', '2026-11-10']);
+    const r1113 = rows.find(r => r.date === '2026-11-13');
+    const r1111 = rows.find(r => r.date === '2026-11-11');
+    const r1110 = rows.find(r => r.date === '2026-11-10');
+    assert.equal(r1113.version, 'v0.1.4');
+    assert.equal(r1111.version, 'v0.1.3');
+    assert.equal(r1110.version, undefined);
+    assert.equal(r1111.notes, CARBON_NOTES);
+    assert.equal(r1110.notes, slug === 'hello-hero' ? HH_PRICING : PRICING_COMMON);
+    assert.match(r1110.notes, /In-app purchase prices are unchanged/);
     assert.doesNotMatch(JSON.stringify(rows), /https?:|tencentscf|SCF|digest|live\d+|[0-9a-f]{40}|sales|requestId|installId/i);
     const apps = readJSON(`docs/data/changelogs/${slug}.json`);
     const combined = changelogEntries(apps, rows);
-    assert.equal(combined.length, apps.length + 3);
+    assert.equal(combined.length, apps.length + rows.length);
     assert.equal(new Set(combined.map(r => r.key)).size, combined.length);
     assert.deepEqual(combined.filter(r => r.kind === 'app').map(({kind, key, ...r}) => r).sort((a,b) => a.version.localeCompare(b.version)), [...apps].sort((a,b) => a.version.localeCompare(b.version)));
   }
@@ -113,19 +117,74 @@ test('/updates lists each shared server row once and keeps per-app extras', () =
   };
   const feed = updatesFeed(files, shared);
   const servers = feed.filter(r => r.kind === 'server');
-  assert.deepEqual(servers.map(r => r.date), ['2026-11-13', '2026-11-11', '2026-11-10']);
+  assert.deepEqual(servers.slice(-3).map(r => r.date), ['2026-11-13', '2026-11-11', '2026-11-10']);
   for (const row of servers) {
     assert.deepEqual(row.apps, ['hello-hero', 'web-copilot']);
     assert.equal(feed.filter(r => r.key === row.key).length, 1);
   }
-  const priced = entryNotesWithExtras(servers[2]);
+  const priced = entryNotesWithExtras(servers.find(r => r.date === '2026-11-10'));
   assert.match(priced, /Voice-reply pricing has increased/);
   assert.match(priced, /Hello, Hero/);
   assert.match(priced, /^Features\n/m);
   assert.ok(priced.indexOf('Features') < priced.indexOf('Voice-reply'));
   assert.ok(priced.indexOf('Voice-reply') < priced.indexOf('In-app purchase prices are unchanged'));
-  assert.doesNotMatch(entryNotesWithExtras(servers[0]), /Hello, Hero\n-/);
+  assert.doesNotMatch(entryNotesWithExtras(servers.find(r => r.date === '2026-11-13')), /Hello, Hero\n-/);
   assert.equal(APP_NAMES['hello-hero'], 'Hello, Hero');
+});
+test('server release upserts update shared.json idempotently and reject internal terms', t => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'site-server-update-test-'));
+  t.after(() => fs.rmSync(dir, {recursive:true, force:true}));
+  for (const rel of ['scripts/merge-server-update.py', 'scripts/fetch-changelogs.py', 'docs/data/changelogs/hello-hero.json', 'docs/data/server-updates/shared.json']) {
+    const dest = path.join(dir, rel); fs.mkdirSync(path.dirname(dest), {recursive:true}); fs.copyFileSync(path.join(root, rel), dest);
+  }
+  const appPath = path.join(dir, 'docs/data/changelogs/hello-hero.json');
+  const appBefore = fs.readFileSync(appPath);
+  const servicePath = path.join(dir, 'docs/data/server-updates/shared.json');
+  const payload = path.join(dir, 'server-fixture.json');
+
+  fs.writeFileSync(payload, JSON.stringify({
+    version: '0.1.5',
+    date: '2026-11-19',
+    apps: ['hello-hero', 'web-copilot'],
+    notes: 'Features\n\n- Added Gemini 4 Neon.\n- In-app purchase prices are unchanged.',
+    extras: {'hello-hero': '- Voice-reply reference rates updated.'}
+  }));
+  let r = spawnSync('python3', [path.join(dir, 'scripts/merge-server-update.py'), payload], {encoding:'utf8'});
+  assert.equal(r.status, 0, r.stderr);
+  assert.match(r.stdout, /server-update v0\.1\.5 \(2026-11-19\): added/);
+
+  let rows = JSON.parse(fs.readFileSync(servicePath, 'utf8'));
+  assert.equal(rows.length, 4);
+  assert.equal(rows[0].version, 'v0.1.5');
+  assert.equal(rows[0].date, '2026-11-19');
+  assert.deepEqual(rows[0].apps, ['hello-hero', 'web-copilot']);
+  assert.equal(rows[0].extras['hello-hero'], '- Voice-reply reference rates updated.');
+
+  // Upserting the same version updates in place without adding a duplicate row.
+  fs.writeFileSync(payload, JSON.stringify({
+    version: 'v0.1.5',
+    date: '2026-11-19',
+    apps: ['hello-hero', 'web-copilot'],
+    notes: 'Features\n\n- Added Gemini 4 Neon (11×).\n- In-app purchase prices are unchanged.'
+  }));
+  r = spawnSync('python3', [path.join(dir, 'scripts/merge-server-update.py'), payload], {encoding:'utf8'});
+  assert.equal(r.status, 0, r.stderr);
+  assert.match(r.stdout, /server-update v0\.1\.5 \(2026-11-19\): updated/);
+  rows = JSON.parse(fs.readFileSync(servicePath, 'utf8'));
+  assert.equal(rows.length, 4);
+  assert.equal(rows[0].extras, undefined);
+  assert.match(rows[0].notes, /11×/);
+
+  // Forbidden internal terms are rejected before modifying shared.json.
+  fs.writeFileSync(payload, JSON.stringify({
+    version: 'v0.1.6',
+    date: '2026-11-20',
+    notes: 'Features\n\n- Deployed to SCF live2'
+  }));
+  r = spawnSync('python3', [path.join(dir, 'scripts/merge-server-update.py'), payload], {encoding:'utf8'});
+  assert.notEqual(r.status, 0);
+  assert.equal(JSON.parse(fs.readFileSync(servicePath, 'utf8')).length, 4);
+  assert.deepEqual(fs.readFileSync(appPath), appBefore);
 });
 test('app release upserts preserve separate server history without any dispatch or network call', t => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'site-changelog-test-'));
